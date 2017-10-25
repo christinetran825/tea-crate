@@ -1,4 +1,4 @@
-class CreateTeaTypes < ActiveRecord::Migration
+class CreateTeatypes < ActiveRecord::Migration
   def change
     create_table :tea_types do |t|
       t.integer :tea_id
