@@ -14,29 +14,63 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/teas' do
-    erb :"/teas/index"
+    if !logged_in
+      redirect '/login'
+    else
+      erb :'/teas/index'
+    end
   end
 
+  # get '/teas/index' do
+  #   erb :"/teas/index"
+  # end
+
   get '/signup' do
-    erb :"/signup"
+    if !logged_in
+      erb :'/signup'
+    else
+      redirect "/teas"
+    end
   end
 
   post '/signup' do
-    # if !logged_in
-    #   erb :'/signup'
-    # else
-      @user = User.create(params)
+    if params.has_value?("")
+      redirect "/signup"
+    else
+      @user = User.new
+      @user.name = params[:name]
+      @user.email = params[:email]
+      @user.password_digest = params[:password]
       session[:user_id] = @user.id
-      redirect :"/teas/index"
-    # end
+      redirect "/teas"
+    end
   end
 
-  get "/login" do
-    erb :'/login'
+  get '/login' do
+    if !logged_in
+      erb :'/login'
+    else
+      redirect '/teas'
+    end
+  end
+
+  post '/login' do
+    @user = User.find_by(name: params[:name])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect "/teas"
+    else
+      redirect "/login"
+    end
   end
 
   get '/logout' do
-    erb :'/logout'
+    if !logged_in
+      redirect "/"
+    else
+      session.clear
+      redirect "/login"
+    end
   end
 
 
