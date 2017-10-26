@@ -13,9 +13,9 @@ class ApplicationController < Sinatra::Base
     erb :'/index'
   end
 
-  get '/signup' do
+  get '/registrations/signup' do
     if !logged_in
-      erb :'/signup'
+      erb :'/registrations/signup'
     else
       redirect "/teas"
     end
@@ -23,12 +23,13 @@ class ApplicationController < Sinatra::Base
 
   post '/signup' do
     if params.has_value?("")
-      redirect "/signup"
+      redirect "/registrations/signup"
     else
       @user = User.new
       @user.name = params[:name]
       @user.email = params[:email]
       @user.password_digest = params[:password]
+      @user.save
       session[:user_id] = @user.id
       redirect "/teas"
     end
@@ -59,6 +60,11 @@ class ApplicationController < Sinatra::Base
       session.clear
       redirect "/login"
     end
+  end
+
+  get '/users/show' do
+    @user = User.find(session[:id])
+    erb :'/users/show'
   end
 
 
