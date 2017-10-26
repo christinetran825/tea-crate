@@ -22,7 +22,7 @@ class TeaController < ApplicationController
       redirect "/teas/new"
     else
       @tea = Tea.create(params)
-      redirect "/teas/#{{@tea.id}}"
+      redirect "/teas/#{@tea.id}"
     end
   end
 
@@ -44,7 +44,7 @@ class TeaController < ApplicationController
   end
 
   delete '/teas/:id' do
-    @tea = Tea.find_by(params[:id]
+    @tea = Tea.find_by(params[:id])
     @tea.delete
     redirect "/teas"
   end
