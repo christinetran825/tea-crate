@@ -27,24 +27,24 @@ class TeaController < ApplicationController
   end
 
   get '/teas/:id' do
-    @tea = Tea.find(params[:id])
+    @tea = Tea.find_by(params[:id])
     erb :'/teas/show_tea'
   end
 
   get '/teas/:id/edit' do
-    @tea = Tea.find(params[:id])
+    @tea = Tea.find_by(params[:id])
     erb :'/teas/edit_tea'
   end
 
   patch '/teas/:id' do
-    @tea = Tea.find(params[:id])
+    @tea = Tea.find_by(params[:id])
     @tea.type = params[:type]
     @tea.save
     redirect "/teas/#{@tea.id}"
   end
 
   delete '/teas/:id' do
-    @tea = Tea.find(params[:id]
+    @tea = Tea.find_by(params[:id]
     @tea.delete
     redirect "/teas"
   end
