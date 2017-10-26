@@ -21,8 +21,8 @@ class TeaController < ApplicationController
     if params.has_any?("")
       redirect "/teas/new"
     else
-      # @tea = Tea.create
-      erb :'/teas/:id'
+      @tea = Tea.create(params)
+      redirect "/teas/#{{@tea.id}}"
     end
   end
 
@@ -32,16 +32,21 @@ class TeaController < ApplicationController
   end
 
   get '/teas/:id/edit' do
-
+    @tea = Tea.find(params[:id])
     erb :'/teas/edit_tea'
   end
 
   patch '/teas/:id' do
     @tea = Tea.find(params[:id])
+    @tea.type = params[:type]
+    @tea.save
+    redirect "/teas/#{@tea.id}"
   end
 
   delete '/teas/:id' do
-    Tea.destroy(params[:tea])
+    @tea = Tea.find(params[:id]
+    @tea.delete
+    redirect "/teas"
   end
 
 end
