@@ -1,0 +1,27 @@
+<h1>Add a Tea to your Crate<h1>
+
+<form method="post" action="/teas">
+  <label>Name:</label>
+  <input type="text" name="tea_name">
+  <br>
+  <label>Brand:</label>
+  <input type="text" name="brand">
+  <br>
+  <label>Type:</label>
+    <!-- <%@types.each do |type|%>
+      <input type="checkbox" name="tea[type_id]" value="<%=type.id%>" id="<%=type.id%>"><%=type.name%></input>
+    <%end%> -->
+  <br>
+  <label>Origin:</label>
+    <!-- <%@types.each do |type|%>
+      <input type="checkbox" name="tea[type_id]" value="<%=type.id%>" id="<%=type.id%>"><%=type.name%></input>
+    <%end%> -->
+  <br>
+  <label>Tasting Notes:</label>
+  <input type="text" name="tasting_notes">
+  <br>
+  <label>Comments:</label>
+  <input type="text" name="comments">
+  <br>
+  <input type="submit" value="Add to Crate">
+</form>
