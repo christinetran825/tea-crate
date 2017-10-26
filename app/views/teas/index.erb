@@ -1,11 +1,9 @@
-<h1>Welcome! <%=@user.name%><h1>
+  <h1>Your Tea Crate</h1>
 
-<h3>Menu</h3>
-  <ul>
-    <li><a href="/teas/index">Your Tea Crate</a></li>
-    <li><a href="/teas/tea-info/history-tea">History of Tea</a></li>
-    <li>The Art of Tea</li>
-    <li>Tea Customs</li>
-    <li>Tea Etiquette</li>
-    <li>Tea Resources</li>
-  </ul>
+  <h3><a href="/teas/create_tea">Add a New Tea to Your Collection</a></h3>
+
+  <!-- user can sort by tea name(abc order), type, origin, or brands -->
+  <!-- user can search by tea name -->
+  <% @teas.each do |tea| %>
+    <p><%=tea.name%></p>
+  <% end %>
