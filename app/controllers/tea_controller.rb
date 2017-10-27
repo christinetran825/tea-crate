@@ -1,12 +1,15 @@
 class TeaController < ApplicationController
 
-  get '/teas' do
-    if !logged_in
-      redirect "/login"
-    else
+  get '/users/:id/teas' do
+    binding.pry
+    # if !logged_in
+    #   redirect "/login"
+    # else
+      # @user = current_user
+      @user = User.find_by(session[:user_id])
       @teas = Tea.all
       erb :'/teas/index'
-    end
+    # end
   end
 
   get '/teas/new' do
@@ -17,7 +20,7 @@ class TeaController < ApplicationController
     end
   end
 
-  post '/teas' do
+  post '/users/:id/teas' do
     if params.has_any?("")
       redirect "/teas/new"
     else
@@ -27,6 +30,7 @@ class TeaController < ApplicationController
   end
 
   get '/teas/:id' do
+    # binding.pry
     @tea = Tea.find_by(params[:id])
     erb :'/teas/show_tea'
   end
