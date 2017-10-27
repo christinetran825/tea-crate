@@ -7,6 +7,13 @@
   <!-- user can edit and delete an exisiting tea -->
   <% @teas.each do |tea| %>
     <h2><%=tea.name%></h2>
-    <p><%=tea.type%></p>
-    <p><%=tea.origin%></p>
+    <p>Type: <%=tea.type%></p>
+    <p>Origin: <%=tea.origin%></p>
+    <p>Brand: <%=tea.brand%></p>
+    <p>Packaging: <%=tea.packaging%></p>
+    <p>Caffiene: <%=tea.caffiene%></p>
+    <p>Pairings: <%=tea.pairings%></p>
+    <p>Brew Time: <%=tea.brew_time%></p>
+    <p>Tasting Notes: <%=tea.tasting_notes%></p>
+    <p>Comments: <%=tea.comments%></p>
   <% end %>
