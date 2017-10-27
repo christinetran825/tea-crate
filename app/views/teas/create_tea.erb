@@ -1,6 +1,6 @@
-<h1>Add a Tea to your Crate<h1>
+<h1>Add a New Tea to your Collection<h1>
 
-<form method="post" action="/teas">
+<form method="post" action="/users/<%=@user.id%>/teas">
   <label>Name:</label>
   <input type="text" name="tea_name">
   <br>
@@ -13,7 +13,7 @@
     <%end%> -->
   <br>
   <label>Origin:</label>
-    <!-- <%@types.each do |type|%>
+    <!-- <%@origins.each do |type|%>
       <input type="checkbox" name="tea[type_id]" value="<%=type.id%>" id="<%=type.id%>"><%=type.name%></input>
     <%end%> -->
   <br>
