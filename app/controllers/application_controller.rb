@@ -17,7 +17,8 @@ class ApplicationController < Sinatra::Base
     if !logged_in
       erb :'/registrations/signup'
     else
-      redirect "/teas"
+      # redirect "/teas"
+      redirect "/users/#{@user.id}/teas"
     end
   end
 
@@ -26,7 +27,7 @@ class ApplicationController < Sinatra::Base
       redirect "/registrations/signup"
     else
       @user = User.new
-      @user.name = params[:name]
+      @user.name = params[:username]
       @user.email = params[:email]
       @user.password = params[:password]
       @user.save
@@ -39,7 +40,8 @@ class ApplicationController < Sinatra::Base
     if !logged_in
       erb :'/login'
     else
-      redirect '/teas'
+      # redirect '/teas'
+      redirect "/users/#{@user.id}/teas"
     end
   end
 
