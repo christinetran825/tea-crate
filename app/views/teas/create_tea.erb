@@ -8,28 +8,32 @@
     <input type="text" id="type_brand" name="tea[type][brand]">
     <br>
     <label>Type:</label>
-      <%@types.each do |info|%>
-        <input type="checkbox" name="tea[type][][type_name]" value="<%=type.id%>" id="<%=type.id%>"><%=info.type_name%></input>
+      <%@types.each do |type|%>
+        <% if type.type_name %>
+          <input type="checkbox" name="tea[type][][type_name]" value="<%=type.id%>" id="<%=type.id%>"><%=type.type_name%></input>
+        <% end %>
       <%end%>
     <br>
     <label>Origin:</label>
-      <%@types.each do |info|%>
-        <input type="checkbox" name="tea[type][][origin]" value="<%=type.id%>" id="<%=type.id%>"><%=info.origin%></input>
+      <%@types.each do |type|%>
+        <% if type.origin %>
+          <input type="checkbox" name="tea[type][][origin]" value="<%=type.id%>" id="<%=type.id%>"><%=type.origin%></input>
+        <% end %>
       <%end%>
     <br>
     <label>Leaves:</label>
-      <%@types.each do |info|%>
-        <input type="checkbox" name="tea[type][][leaves]" value="<%=type.id%>" id="<%=type.id%>"><%=info.leaves%></input>
+      <%@types.each do |type|%>
+        <input type="checkbox" name="tea[type][][leaves]" value="<%=type.id%>" id="<%=type.id%>"><%=type.leaves%></input>
       <%end%>
     <br>
     <label>Caffeine:</label>
-      <%@types.each do |info|%>
-        <input type="checkbox" name="tea[type][][caffeine]" value="<%=type.id%>" id="<%=type.id%>"><%=info.caffiene%></input>
+      <%@types.each do |type|%>
+        <input type="checkbox" name="tea[type][][caffeine]" value="<%=type.id%>" id="<%=type.id%>"><%=type.caffeine%></input>
       <%end%>
     <br>
     <label>Pairings:</label>
       <%@types.each do |type|%>
-        <input type="checkbox" name="tea[type][][pairings]" value="<%=type.id%>" id="<%=type.id%>"><%=type.pairings%></input>
+        <input type="checkbox" name="tea[type][][pairing]" value="<%=type.id%>" id="<%=type.id%>"><%=type.pairing%></input>
       <%end%>
     <br>
     <label>Brew Time:</label>
@@ -38,10 +42,10 @@
       <%end%>
     <br>
     <label>Tasting Notes:</label>
-    <input type="text" name="tasting_notes">
+    <input type="textarea" name="tasting_notes">
     <br>
     <label>Comments:</label>
-    <input type="text" name="comments">
+    <input type="textarea" name="comments">
     <br>
     <input type="submit" value="Add to Crate">
 
