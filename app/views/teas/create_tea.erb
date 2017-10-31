@@ -5,36 +5,36 @@
     <input type="text" id="tea_name" name="tea[tea_name]">
     <br>
     <label>Brand:</label>
-    <input type="text" name="brand">
+    <input type="text" id="type_brand" name="tea[type][brand]">
     <br>
     <label>Type:</label>
-      <%@types.each do |type|%>
-        <input type="checkbox" name="tea[type_name]" value="<%=type.id%>" id="<%=type.id%>"><%=type.name%></input>
+      <%@types.each do |info|%>
+        <input type="checkbox" name="tea[type][][type_name]" value="<%=type.id%>" id="<%=type.id%>"><%=info.type_name%></input>
       <%end%>
     <br>
     <label>Origin:</label>
-      <%@types.each do |type|%>
-        <input type="checkbox" name="tea[origin][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.origin%></input>
+      <%@types.each do |info|%>
+        <input type="checkbox" name="tea[type][][origin]" value="<%=type.id%>" id="<%=type.id%>"><%=info.origin%></input>
       <%end%>
     <br>
     <label>Leaves:</label>
-      <%@types.each do |type|%>
-        <input type="checkbox" name="tea[leaves][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.leaves%></input>
+      <%@types.each do |info|%>
+        <input type="checkbox" name="tea[type][][leaves]" value="<%=type.id%>" id="<%=type.id%>"><%=info.leaves%></input>
       <%end%>
     <br>
     <label>Caffeine:</label>
-      <%@types.each do |type|%>
-        <input type="checkbox" name="tea[caffeine][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.caffiene%></input>
+      <%@types.each do |info|%>
+        <input type="checkbox" name="tea[type][][caffeine]" value="<%=type.id%>" id="<%=type.id%>"><%=info.caffiene%></input>
       <%end%>
     <br>
     <label>Pairings:</label>
       <%@types.each do |type|%>
-        <input type="checkbox" name="tea[pairings][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.pairings%></input>
+        <input type="checkbox" name="tea[type][][pairings]" value="<%=type.id%>" id="<%=type.id%>"><%=type.pairings%></input>
       <%end%>
     <br>
     <label>Brew Time:</label>
       <%@types.each do |type|%>
-        <input type="checkbox" name="tea[brew_time][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.brew_time%></input>
+        <input type="checkbox" name="tea[type][][brew_time]" value="<%=type.id%>" id="<%=type.id%>"><%=type.brew_time%></input>
       <%end%>
     <br>
     <label>Tasting Notes:</label>
