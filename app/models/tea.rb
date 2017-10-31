@@ -7,4 +7,18 @@ class Tea < ActiveRecord::Base
   has_many :pairings, through: :types
   has_many :brew_times, through: :types
   has_many :brands, through: :types
+
+
+  attr_reader :name
+
+  TEA = []
+
+  def initialize(params)
+    @tea_name = params[:tea_name]
+    TEA << self
+  end
+
+  def self.all
+    TEA
+  end
 end
