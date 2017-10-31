@@ -22,7 +22,7 @@ class TeaController < ApplicationController
     # end
   end
 
-  get '/users/:id/teas/:tea_id' do
+  get '/users/:id/teas/tea_id' do
     @tea = Tea.find_by(params[:id])
     erb :'/teas/show_tea'
   end
@@ -32,8 +32,6 @@ class TeaController < ApplicationController
       redirect "/users/#{@user.id}/teas/new"
     else
       @user = User.find_by(session[:user_id])
-      # binding.pry
-      @types = Type.new
       # @tea = Tea.create(name: params[:tea][:name], type: params[:tea][:type])
       # params[:tea][:type].each do |tea_data|
       #   type = Type.new(tea_data)
@@ -41,8 +39,11 @@ class TeaController < ApplicationController
       #   type.save
       # end
       # @types.type = params[:type_name]
-      @types.brand = params[:tea][:type][:brand]
-      redirect "/users/#{@user.id}/teas/#{@tea.id}"
+      @teas = Tea.all
+      @types = params[:tea][:type]
+      # @tea.id = params[:id]
+      # binding.pry
+      redirect "/users/#{@user.id}/teas/#{params[:id]}"
     end
   end
 
