@@ -12,14 +12,14 @@ class Type < ActiveRecord::Base
 
   TYPE = []
 
-  def initialize(args)
-    @tea_name = args[:tea_name]
-    @origin = args[:origin]
-    @leaves = args[:leaves]
-    @caffeine = args[:caffeine]
-    @pairings = args[:pairings]
-    @brew_times = args[:brew_times]
-    @brands = args[:brands]
+  def initialize(params)
+    @tea_name = params[:tea_name]
+    @origin = params[:origin]
+    @leaves = params[:leaves]
+    @caffeine = params[:caffeine]
+    @pairings = params[:pairings]
+    @brew_times = params[:brew_times]
+    @brands = params[:brands]
     TYPE << self
   end
 
