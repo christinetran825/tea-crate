@@ -5,8 +5,8 @@ class TeaController < ApplicationController
     # if !logged_in
     #   redirect "/login"
     # else
-      # @user = current_user
-      @user = User.find_by(session[:user_id])
+      @user = current_user
+      # @user = User.find_by(session[:user_id])
       @teas = Tea.all
       erb :'/teas/index'
     # end
@@ -17,6 +17,7 @@ class TeaController < ApplicationController
     #   redirect "/login"
     # else
       @types = Type.all
+      # binding.pry
       erb :'/teas/create_tea'
     # end
   end
