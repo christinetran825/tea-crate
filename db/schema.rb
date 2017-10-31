@@ -19,20 +19,22 @@ ActiveRecord::Schema.define(version: 20171025220400) do
   end
 
   create_table "teas", force: :cascade do |t|
-    t.string  "name"
-    t.string  "type"
-    t.string  "origin"
+    t.string  "tea_name"
     t.integer "user_id"
   end
 
   create_table "types", force: :cascade do |t|
-    t.string "name"
+    t.string "type_name"
+    t.string "origin"
+    t.string "leaves"
+    t.string "caffeine"
     t.string "pairing"
+    t.string "brew_time"
     t.string "brand"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string  "name"
+    t.string  "username"
     t.string  "email"
     t.string  "password_digest"
     t.integer "tea_id"
