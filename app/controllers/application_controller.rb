@@ -40,7 +40,6 @@ class ApplicationController < Sinatra::Base
     if !logged_in
       erb :'/login'
     else
-      # redirect '/teas'
       redirect "/users/#{@user.id}/teas"
     end
   end
@@ -69,6 +68,25 @@ class ApplicationController < Sinatra::Base
     erb :'/users/show'
   end
 
+  get '/teas/tea-info/history-tea' do
+    erb :'/tea-info/history_tea'
+  end
+
+  get '/teas/tea-info/art-of-tea' do
+    erb :'/tea-info/art_of_tea'
+  end
+
+  get '/teas/tea-info/tea-customs' do
+    erb :'/tea-info/tea_customs'
+  end
+
+  get '/teas/tea-info/tea-etiquette' do
+    erb :'/tea-info/tea_etiquette'
+  end
+
+  get '/teas/tea-info/tea-resources' do
+    erb :'/tea-info/tea_resources'
+  end
 
 #--- helper methods ---
   def current_user
