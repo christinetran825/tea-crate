@@ -1,22 +1,42 @@
 <h1>Add a New Tea to your Collection<h1>
 
-<form method="post" action="/users/<%=@user_id%>/teas/new">
+<form method="post" action="/users/<%=@user_id%>/teas">
   <label>Name:</label>
   <input type="text" name="tea_name">
   <br>
   <label>Brand:</label>
   <input type="text" name="tea_brand">
   <br>
-  <!-- <label>Type:</label>
+  <label>Type:</label>
     <%@types.each do |type|%>
       <input type="checkbox" name="tea[type_id]" value="<%=type.id%>" id="<%=type.id%>"><%=type.name%></input>
     <%end%>
   <br>
   <label>Origin:</label>
-    <%@origins.each do |type|%>
-      <input type="checkbox" name="tea[type_id]" value="<%=type.id%>" id="<%=type.id%>"><%=type.name%></input>
+    <%@types.each do |type|%>
+      <input type="checkbox" name="tea[type_id]" value="<%=type.id%>" id="<%=type.id%>"><%=type.origin%></input>
     <%end%>
-  <br> -->
+  <br>
+  <label>Leaves:</label>
+    <%@types.each do |type|%>
+      <input type="checkbox" name="tea[type_id]" value="<%=type.id%>" id="<%=type.id%>"><%=type.leaves%></input>
+    <%end%>
+  <br>
+  <label>Caffiene:</label>
+    <%@types.each do |type|%>
+      <input type="checkbox" name="tea[type_id]" value="<%=type.id%>" id="<%=type.id%>"><%=type.caffiene%></input>
+    <%end%>
+  <br>
+  <label>Pairings:</label>
+    <%@types.each do |type|%>
+      <input type="checkbox" name="tea[type_id]" value="<%=type.id%>" id="<%=type.id%>"><%=type.pairings%></input>
+    <%end%>
+  <br>
+  <label>Brew Time:</label>
+    <%@types.each do |type|%>
+      <input type="checkbox" name="tea[type_id]" value="<%=type.id%>" id="<%=type.id%>"><%=type.brew_time%></input>
+    <%end%>
+  <br>
   <label>Tasting Notes:</label>
   <input type="text" name="tasting_notes">
   <br>
