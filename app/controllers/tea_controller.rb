@@ -26,17 +26,7 @@ class TeaController < ApplicationController
     if params.has_any?("")
       redirect "/users/:id/teas/new"
     else
-      @type = Type.new
-      @type.name = params[:name]
-      @type.brand = params[:brand]
-      @type.origin = params[:origin]
-      @type.leaves = params[:leaves]
-      @type.caffeine = params[:caffeine]
-      @type.pairings = params[:pairings]
-      @type.brew_time = params[:brew_time]
-      @type.tasting_notes = params[:tasting_notes]
-      @type.comments = params[:comments]
-      @type.save
+      @type = Type.create(params[:type])
       redirect "/users/#{@user.id}/teas/#{@tea.id}"
     end
   end
