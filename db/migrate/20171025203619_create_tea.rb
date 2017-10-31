@@ -1,9 +1,7 @@
 class CreateTea < ActiveRecord::Migration
   def change
     create_table :teas do |t|
-      t.string :name
-      t.string :type
-      t.string :origin
+      t.string :tea_name
       t.integer :user_id
     end
   end

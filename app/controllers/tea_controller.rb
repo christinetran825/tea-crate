@@ -30,7 +30,7 @@ class TeaController < ApplicationController
       @type.brand = params[:brand]
       @type.origin = params[:origin]
       @type.leaves = params[:leaves]
-      @type.caffiene = params[:caffiene]
+      @type.caffeine = params[:caffeine]
       @type.pairings = params[:pairings]
       @type.brew_time = params[:brew_time]
       @type.tasting_notes = params[:tasting_notes]
