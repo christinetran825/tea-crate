@@ -5,12 +5,13 @@
   <!-- user can sort by tea name(abc order), type, origin, or brands -->
   <!-- user can search by tea name -->
   <!-- user can edit and delete an exisiting tea -->
+  <h4>Your Teas</h4>
   <% @teas.each do |tea| %>
     <h2><%=tea.name%></h2>
     <p>Type: <%=tea.type%></p>
     <p>Origin: <%=tea.origin%></p>
     <p>Brand: <%=tea.brand%></p>
-    <p>Packaging: <%=tea.packaging%></p>
+    <p>Leaves: <%=tea.leavess%></p>
     <p>Caffiene: <%=tea.caffiene%></p>
     <p>Pairings: <%=tea.pairings%></p>
     <p>Brew Time: <%=tea.brew_time%></p>
