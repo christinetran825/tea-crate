@@ -16,15 +16,26 @@ class TeaController < ApplicationController
     # if !logged_in
     #   redirect "/login"
     # else
+      @types = Type.all
       erb :'/teas/create_tea'
     # end
   end
 
-  post '/users/:id/teas/new' do
+  post '/users/:id/teas' do
     if params.has_any?("")
       redirect "/users/:id/teas/new"
     else
-      @tea = Tea.create(params)
+      @type = Type.new
+      @type.name = params[:name]
+      @type.brand = params[:brand]
+      @type.origin = params[:origin]
+      @type.leaves = params[:leaves]
+      @type.caffiene = params[:caffiene]
+      @type.pairings = params[:pairings]
+      @type.brew_time = params[:brew_time]
+      @type.tasting_notes = params[:tasting_notes]
+      @type.comments = params[:comments]
+      @type.save
       redirect "/users/#{@user.id}/teas/#{@tea.id}"
     end
   end
