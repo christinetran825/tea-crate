@@ -1,9 +1,8 @@
 class UserController < ApplicationController
   get '/users/signup' do
     if !logged_in
-      erb :'/registrations/signup'
+      erb :'/users/signup'
     else
-      # redirect "/teas"
       redirect "/users/#{@user.id}/teas"
     end
   end
