@@ -31,7 +31,7 @@ class TeaController < ApplicationController
     if params.has_key?("")
       redirect "/users/#{@user.id}/teas/new"
     else
-      @user = User.find_by(session[:user_id])
+      @user = current_user
       # @tea = Tea.create(name: params[:tea][:name], type: params[:tea][:type])
       # params[:tea][:type].each do |tea_data|
       #   type = Type.new(tea_data)
