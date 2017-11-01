@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
     erb :'/index'
   end
 
-  get '/registrations/signup' do
+  get '/users/signup' do
     if !logged_in
       erb :'/registrations/signup'
     else
@@ -24,7 +24,7 @@ class ApplicationController < Sinatra::Base
 
   post '/signup' do
     if params.has_value?("")
-      redirect "/registrations/signup"
+      redirect "/users/signup"
     else
       @user = User.new
       @user.username = params[:username]
