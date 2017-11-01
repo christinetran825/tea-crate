@@ -8,44 +8,48 @@
     <input type="text" id="type_brand" name="tea[type][brand]">
     <br>
     <label>Type:</label>
-      <%@types.each do |type|%>
-        <% if type.type_name %>
-          <input type="checkbox" name="tea[type][][type_name]" value="<%=type.id%>" id="<%=type.id%>"><%=type.type_name%></input>
-        <% end %>
-      <%end%>
+      <input type="checkbox" name"tea[type][][type_name]" value="hardcoded"/>Black(Red)</input>
+      <input type="checkbox" name"tea[type][][type_name]" value="hardcoded"/>Green</input>
+      <input type="checkbox" name"tea[type][][type_name]" value="hardcoded"/>Oolong</input>
+      <input type="checkbox" name"tea[type][][type_name]" value="hardcoded"/>Pu'er</input>
+      <input type="checkbox" name"tea[type][][type_name]" value="hardcoded"/>Tisane(Herbals)</input>
+      <input type="checkbox" name"tea[type][][type_name]" value="hardcoded"/>Blends</input>
     <br>
     <label>Origin:</label>
-      <%@types.each do |type|%>
-        <% if type.origin %>
-          <input type="checkbox" name="tea[type][][origin]" value="<%=type.id%>" id="<%=type.id%>"><%=type.origin%></input>
-        <% end %>
-      <%end%>
+      <input type="checkbox" name"tea[type][][origin]" value="hardcoded"/>China</input>
+      <input type="checkbox" name"tea[type][][origin]" value="hardcoded"/>India</input>
+      <input type="checkbox" name"tea[type][][origin]" value="hardcoded"/>Japan</input>
+      <input type="checkbox" name"tea[type][][origin]" value="hardcoded"/>Taiwan</input>
+      <input type="checkbox" name"tea[type][][origin]" value="hardcoded"/>Sri Lanka (Ceylon)</input>
     <br>
     <label>Leaves:</label>
-      <%@types.each do |type|%>
-        <input type="checkbox" name="tea[type][][leaves]" value="<%=type.id%>" id="<%=type.id%>"><%=type.leaves%></input>
-      <%end%>
+      <input type="checkbox" name="tea[type][][leaves]" value="hardcoded"/>Loose Leaf</input>
+      <input type="checkbox" name="tea[type][][leaves]" value="hardcoded"/>Teabag</input>
     <br>
     <label>Caffeine:</label>
-      <%@types.each do |type|%>
-        <input type="checkbox" name="tea[type][][caffeine]" value="<%=type.id%>" id="<%=type.id%>"><%=type.caffeine%></input>
-      <%end%>
+      <input type="checkbox" name="tea[type][][caffeine]" value="hardcoded"/>Caffeine</input>
+      <input type="checkbox" name="tea[type][][caffeine]" value="hardcoded"/>Caffeine-Free</input>
     <br>
     <label>Pairings:</label>
-      <%@types.each do |type|%>
-        <input type="checkbox" name="tea[type][][pairing]" value="<%=type.id%>" id="<%=type.id%>"><%=type.pairing%></input>
-      <%end%>
-    <br>
-    <label>Brew Time:</label>
-      <%@types.each do |type|%>
-        <input type="checkbox" name="tea[type][][brew_time]" value="<%=type.id%>" id="<%=type.id%>"><%=type.brew_time%></input>
-      <%end%>
+      <input type="checkbox" name="tea[type][][pairings]" value="hardcoded"/>Cream</input>
+      <input type="checkbox" name="tea[type][][pairings]" value="hardcoded"/>Honey</input>
+      <input type="checkbox" name="tea[type][][pairings]" value="hardcoded"/>Lemon</input>
+      <input type="checkbox" name="tea[type][][pairings]" value="hardcoded"/>Milk</input>
+      <input type="checkbox" name="tea[type][][pairings]" value="hardcoded"/>Sugar</input>
     <br>
     <label>Tasting Notes:</label>
-    <input type="textarea" name="tasting_notes">
+      <input type="checkbox" name="tea[type][][tasting_notes]" value="hardcoded"/>Bitter</input>
+      <input type="checkbox" name="tea[type][][tasting_notes]" value="hardcoded"/>Citrus</input>
+      <input type="checkbox" name="tea[type][][tasting_notes]" value="hardcoded"/>Earthy</input>
+      <input type="checkbox" name="tea[type][][tasting_notes]" value="hardcoded"/>Light</input>
+      <input type="checkbox" name="tea[type][][tasting_notes]" value="hardcoded"/>Nutty</input>
+      <input type="checkbox" name="tea[type][][tasting_notes]" value="hardcoded"/>Spicy</input>
+    <br>
+    <label>Brew Time:</label>
+      <input type="textarea" name="brew_time">
     <br>
     <label>Comments:</label>
-    <input type="textarea" name="comments">
+      <input type="textarea" name="comments">
     <br>
     <input type="submit" value="Add to Crate">
 
