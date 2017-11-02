@@ -1,8 +1,24 @@
-<h1>Welcome, <%=@user.username%></h1>
+<!-- begin setup Logo and Navigation -->
 
-<a href="/logout">Log Out</a>
+  <h1>Tea Crate</h1>
 
-<br>
-<!-- <h4><a href="/teas">Your Tea Crate</a></h4> -->
-<h4><a href="/users/<%=@user.id%>/teas">Your Tea Crate</a></h4>
-<h4>Brew timer?</h4>
+  <h3>Menu</h3>
+    <ul>
+      <li><a href="/users/show">Home</a></li>
+      <li><a href="/teas/tea-info/history-tea">History of Tea</a></li>
+      <li><a href="/teas/tea-info/art-of-tea">The Art of Tea</a></li>
+      <li><a href="/teas/tea-info/tea-customs">Tea Customs</a></li>
+      <li><a href="/teas/tea-info/tea-etiquette">Tea Etiquette</a></li>
+      <li><a href="/teas/tea-info/tea-resources">Tea Resources</a></li>
+      <li><a href="/logout">Log Out</a></li>
+    </ul>
+
+    <br>
+<!-- end setup Logo and Navigation -->
+
+  <h1>Welcome, <%=@user.username%></h1>
+
+  <br>
+  <!-- <h4><a href="/teas">Your Tea Crate</a></h4> -->
+  <h4><a href="/users/<%=@user.id%>/teas">Your Tea Crate</a></h4>
+  <h4>Brew timer?</h4>
