@@ -1,52 +1,32 @@
 class TeaController < ApplicationController
 
   get '/users/:id/teas' do
-    # binding.pry
-    # if !logged_in
-    #   redirect "/login"
-    # else
-      @user = current_user
-      # @user = User.find_by(session[:user_id])
-      @teas = Tea.all
-      erb :'/teas/index'
-    # end
+    @user = current_user
+    @teas = Tea.all
+    erb :'/teas/index'
   end
 
   get '/users/:id/teas/new' do
-    # if !logged_in
-    #   redirect "/login"
-    # else
-      @user = current_user
-      @types = Type.all
-      erb :'/teas/create_tea'
-    # end
-  end
-
-  get '/users/:id/teas/tea_id' do
-    @tea = Tea.find_by(params[:id])
-    erb :'/teas/show_tea'
+    @user = current_user
+    erb :'/teas/create_tea'
   end
 
   post '/users/:id/teas' do
+    binding.pry
     if params.has_key?("")
       redirect "/users/#{@user.id}/teas/new"
     else
       @user = current_user
-      # @tea = Tea.create(name: params[:tea][:name], type: params[:tea][:type])
-      # params[:tea][:type].each do |tea_data|
-      #   type = Type.new(tea_data)
-      #   type.tea = tea
-      #   type.save
-      # end
-      # @types.type = params[:type_name]
       @teas = Tea.all
-      @types = params[:tea][:type]
-      # @tea.id = params[:id]
-      # binding.pry
-      redirect "/users/#{@user.id}/teas/#{params[:id]}"
+      @types = Type.all
+      redirect "/users/#{@user.id}/teas/#{@tea.id}"
     end
   end
 
+  get '/users/:id/teas/:tea_id' do
+    @tea = Tea.find_by(params[:id])
+    erb :'/teas/show_tea'
+  end
 
   #
   # get '/users/:id/teas/:id/edit' do
@@ -66,5 +46,6 @@ class TeaController < ApplicationController
   #   @tea.delete
   #   redirect "/users/:id/teas"
   # end
+
 
 end
