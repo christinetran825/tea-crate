@@ -38,7 +38,7 @@ class ApplicationController < Sinatra::Base
     User.find_by(session[:user_id])
   end
 
-  def logged_in
+  def logged_in?
     !!session[:user_id]
   end
 
