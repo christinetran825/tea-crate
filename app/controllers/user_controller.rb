@@ -1,7 +1,7 @@
 class UserController < ApplicationController
 
   get '/signup' do
-    if !logged_in
+    if !logged_in?
       erb :'/users/signup'
     else
       redirect "/users/#{@user.id}"
@@ -23,7 +23,7 @@ class UserController < ApplicationController
   end
 
   get '/login' do
-    if !logged_in
+    if !logged_in?
       erb :'/users/login'
     else
       redirect "/users/#{@user.id}"
@@ -41,7 +41,7 @@ class UserController < ApplicationController
   end
 
   get '/logout' do
-    if !logged_in
+    if !logged_in?
       redirect "/"
     else
       session.clear
