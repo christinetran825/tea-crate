@@ -24,7 +24,7 @@
   <!-- user can search by tea name -->
   <!-- user can edit and delete an exisiting tea -->
   <h4>Your Teas</h4>
-  <% @teas.each do |tea| %>
+  <% @user.teas.each do |tea| %>
     <h2><%=tea.name%></h2>
     <p>Type: <%=tea.type%></p>
     <p>Origin: <%=tea.origin%></p>
