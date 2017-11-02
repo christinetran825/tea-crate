@@ -1,15 +1,16 @@
 class UserController < ApplicationController
-  get '/users/signup' do
+
+  get '/signup' do
     if !logged_in
       erb :'/users/signup'
     else
-      redirect "/users/#{@user.id}/teas"
+      redirect "/users/#{@user.id}"
     end
   end
 
   post '/signup' do
     if params.has_value?("")
-      redirect "/users/signup"
+      redirect "/signup"
     else
       @user = User.new
       @user.username = params[:username]
@@ -23,9 +24,9 @@ class UserController < ApplicationController
 
   get '/login' do
     if !logged_in
-      erb :'/login'
+      erb :'/users/login'
     else
-      redirect "/users/#{@user.id}/teas"
+      redirect "/users/#{@user.id}"
     end
   end
 
