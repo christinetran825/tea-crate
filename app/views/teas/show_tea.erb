@@ -18,7 +18,7 @@
 
   <h1>Your New Tea</h1>
   <br>
-  <h4><a href="/users/:id/teas/:tea_id/edit">Edit New Tea</a>  |  Delete New Tea</h4>
+  <h4><a href="/users/<%=@user.id%>/teas/<%=@tea.id%>/edit">Edit New Tea</a>  |  <a href="/users/<%=@user.id%>/teas/<%=@tea.id%>">Delete New Tea</a></h4>
   <br><br>
 
   <% @tea.types.each do |tea| %>
