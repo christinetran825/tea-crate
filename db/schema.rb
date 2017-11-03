@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20171025220400) do
     t.string  "brew_time"
     t.string  "tasting_notes"
     t.string  "brand"
+    t.string  "comments"
     t.integer "tea_id"
   end
 
