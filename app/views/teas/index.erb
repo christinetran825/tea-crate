@@ -24,15 +24,20 @@
   <!-- user can search by tea name -->
   <!-- user can edit and delete an exisiting tea -->
   <h4>Your Teas</h4>
-  <% @user.teas.each do |tea| %>
-    <h2><%=tea.name%></h2>
-    <p>Type: <%=tea.type%></p>
+
+  <% @teas.each do |tea| %>
+    <h3><%=tea.tea_name%></h3>
+  <% end %>
+
+  <% @types.each do |tea| %>
+    <p>Type: <%=tea.type_name%></p>
     <p>Origin: <%=tea.origin%></p>
     <p>Brand: <%=tea.brand%></p>
-    <p>Leaves: <%=tea.leavess%></p>
-    <p>Caffiene: <%=tea.caffiene%></p>
-    <p>Pairings: <%=tea.pairings%></p>
+    <p>Leaves: <%=tea.leaves%></p>
+    <p>Caffeine: <%=tea.caffeine%></p>
+    <p>Pairings: <%=tea.pairing%></p>
     <p>Brew Time: <%=tea.brew_time%></p>
     <p>Tasting Notes: <%=tea.tasting_notes%></p>
     <p>Comments: <%=tea.comments%></p>
+    <p><a href="/users/<%=@user.id%>/teas/<%=@tea_id%>/edit">edit</a> | <a href="/users/<%=@user.id%>/teas/<%=@tea_id%>">delete</a> </p>
   <% end %>
