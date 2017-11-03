@@ -7,6 +7,7 @@ class CreateTypes < ActiveRecord::Migration
       t.string :caffeine
       t.string :pairing
       t.string :brew_time
+      t.string :tasting_notes
       t.string :brand
       t.integer :tea_id
     end

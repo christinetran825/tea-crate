@@ -24,20 +24,21 @@ ActiveRecord::Schema.define(version: 20171025220400) do
   end
 
   create_table "types", force: :cascade do |t|
-    t.string "type_name"
-    t.string "origin"
-    t.string "leaves"
-    t.string "caffeine"
-    t.string "pairing"
-    t.string "brew_time"
-    t.string "brand"
+    t.string  "type_name"
+    t.string  "origin"
+    t.string  "leaves"
+    t.string  "caffeine"
+    t.string  "pairing"
+    t.string  "brew_time"
+    t.string  "tasting_notes"
+    t.string  "brand"
+    t.integer "tea_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string  "username"
-    t.string  "email"
-    t.string  "password_digest"
-    t.integer "tea_id"
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
   end
 
 end
