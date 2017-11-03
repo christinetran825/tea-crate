@@ -17,16 +17,19 @@ class TeaController < ApplicationController
     else
       @user = current_user
       binding.pry
-      @teas = Tea.new
-      @teas.tea_name = params[:tea][:tea_name]
-      @teas.brand = params[:tea][:brand]
-      @teas.types = params[:tea][:types][:type_name]
-      @teas.tea_name = params[:tea][:tea_name]
-      @teas.tea_name = params[:tea][:tea_name]
-      @teas.tea_name = params[:tea][:tea_name]
-      @teas.save
-      @types = Type.all
-
+      @tea = Tea.new
+      @tea.tea_name = params[:tea][:tea_name]
+      @type = Type.new
+      @type.brand = params[:tea][:brand]
+      @type.type_name = params[:tea][:types]
+      @type.origin = params[:tea][:origin]
+      @type.leaves = params[:tea][:leaves]
+      @type.caffeine = params[:tea][:caffeine]
+      @type.pairing = params[:tea][:pairing]
+      @type.tasting_notes = params[:tea][:tasting_notes]
+      @type.brew_time = params[:tea][:brew_time]
+      @type.comments = params[:comments]
+      @tea.save
       redirect "/users/#{@user.id}/teas/#{@tea.id}"
     end
   end
