@@ -1,3 +1,3 @@
 class Type < ActiveRecord::Base
-  has_many :teas
+  belongs_to :tea
 end
