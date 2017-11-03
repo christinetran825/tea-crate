@@ -12,18 +12,27 @@ class TeaController < ApplicationController
   end
 
   post '/users/:id/teas' do
-    binding.pry
     if params.has_key?("")
       redirect "/users/#{@user.id}/teas/new"
     else
       @user = current_user
-      @teas = Tea.all
+      binding.pry
+      @teas = Tea.new
+      @teas.tea_name = params[:tea][:tea_name]
+      @teas.brand = params[:tea][:brand]
+      @teas.types = params[:tea][:types][:type_name]
+      @teas.tea_name = params[:tea][:tea_name]
+      @teas.tea_name = params[:tea][:tea_name]
+      @teas.tea_name = params[:tea][:tea_name]
+      @teas.save
       @types = Type.all
+
       redirect "/users/#{@user.id}/teas/#{@tea.id}"
     end
   end
 
   get '/users/:id/teas/:tea_id' do
+    @user = current_user
     @tea = Tea.find_by(params[:id])
     erb :'/teas/show_tea'
   end
