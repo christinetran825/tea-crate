@@ -36,7 +36,7 @@ class TeaController < ApplicationController
     @tea = Tea.find_by(params[:id])
     @type = Type.find_by(params[:id])
     # @new_tea = TeaType.create(params)
-    binding.pry
+    # binding.pry
     erb :'/teas/show_tea'
   end
 
@@ -51,15 +51,15 @@ class TeaController < ApplicationController
     @tea = Tea.find_by(params[:id])
     @tea.types.update(params[:tea][:type])
     @tea.save
-
     redirect "/users/#{@user.id}/teas/#{@tea.id}"
   end
-  #
-  # delete '/users/:id/teas/:id' do
-  #   @tea = Tea.find_by(params[:id])
-  #   @tea.delete
-  #   redirect "/users/:id/teas"
-  # end
+
+  delete '/users/:id/teas/:tea_id' do
+    @user = current_user
+    @tea = Tea.find_by(params[:id])
+    @tea.destroy
+    redirect "/users/:id/teas"
+  end
 
 
 end
