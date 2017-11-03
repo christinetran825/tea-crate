@@ -28,7 +28,7 @@ class TeaController < ApplicationController
     @user = current_user
     @tea = Tea.find_by(params[:id])
     @type = Type.find_by(params[:id])
-    @new_tea = TeaType.create(params)
+    # @new_tea = TeaType.create(params)
     binding.pry
     erb :'/teas/show_tea'
   end
