@@ -23,48 +23,50 @@
       <input type="text" id="tea_name" name="tea[tea_name]">
     <br><br>
     <label for="brand">Brand:</label>
-      <input type="text" id="brand" name="tea[type][brand]">
+      <input type="text" id="brand" name="tea[brand]">
     <br><br>
-    <label for="type_name">Type:</label>
-      <input type="checkbox" name="tea[type_names][][name]" value="Black(Red)">Black(Red)
-      <input type="checkbox" name="tea[type_names][][name]" value="Green">Green
-      <input type="checkbox" name="tea[type_names][][name]" value="Oolong">Oolong
-      <input type="checkbox" name="tea[type_names][][name]" value="Pu'er">Pu'er
-      <input type="checkbox" name="tea[type_names][][name]" value="Tisane(Herbals)">Tisane(Herbals)
-      <input type="checkbox" name="tea[type_names][][name]" value="Blends">Blends
+    <label for="type">Type:</label>
+      <input type="checkbox" name="tea[types][][type_name]" value="Black(Red)">Black(Red)
+      <input type="checkbox" name="tea[types][][type_name]" value="Green">Green
+      <input type="checkbox" name="tea[types][][type_name]" value="Oolong">Oolong
+      <input type="checkbox" name="tea[types][][type_name]" value="Pu'er">Pu'er
+      <input type="checkbox" name="tea[types][][type_name]" value="Tisane(Herbals)">Tisane(Herbals)
+      <input type="checkbox" name="tea[types][][type_name]" value="White">White
+      <input type="checkbox" name="tea[types][][type_name]" value="Blends">Blends
     <br><br>
     <label for="origin">Origin:</label>
-      <input type="checkbox" name="tea[type_names][][origin]" value="China">China
-      <input type="checkbox" name="tea[type_names][][origin]" value="India">India
-      <input type="checkbox" name="tea[type_names][][origin]" value="Japan">Japan
-      <input type="checkbox" name="tea[type_names][][origin]" value="Taiwan">Taiwan
-      <input type="checkbox" name="tea[type_names][][origin]" value="Sri Lanka (Ceylon)">Sri Lanka (Ceylon)
+      <input type="checkbox" name="tea[origin][][origin_name]" value="China">China
+      <input type="checkbox" name="tea[origin][][origin_name]" value="India">India
+      <input type="checkbox" name="tea[origin][][origin_name]" value="Japan">Japan
+      <input type="checkbox" name="tea[origin][][origin_name]" value="Taiwan">Taiwan
+      <input type="checkbox" name="tea[origin][][origin_name]" value="Sri Lanka (Ceylon)">Sri Lanka (Ceylon)
     <br><br>
     <label for="leaves">Leaves:</label>
-      <input type="checkbox" name="tea[type_names][][leaves]" value="Loose Leaf">Loose Leaf
-      <input type="checkbox" name="tea[type_names][][leaves]" value="Teabag">Teabag
+      <input type="checkbox" name="tea[leaves][][leaves_style]" value="Loose Leaf">Loose Leaf
+      <input type="checkbox" name="tea[leaves][][leaves_style]" value="Teabag">Teabag
     <br><br>
     <label for="caffeine">Caffeine:</label>
-      <input type="checkbox" name="tea[type_names][][caffeine]" value="Caffeine">Caffeine
-      <input type="checkbox" name="tea[type_names][][caffeine]" value="Caffeine-Free">Caffeine-Free
+      <input type="checkbox" name="tea[caffeine][][contains_caffeine]" value="Caffeine">Caffeine
+      <input type="checkbox" name="tea[caffeine][][contains_caffeine]" value="Caffeine-Free">Caffeine-Free
     <br><br>
     <label for="pairings">Pairings:</label>
-      <input type="checkbox" name="tea[type_names][][pairing]" value="Cream">Cream
-      <input type="checkbox" name="tea[type_names][][pairing]" value="Honey">Honey
-      <input type="checkbox" name="tea[type_names][][pairing]" value="Lemon">Lemon
-      <input type="checkbox" name="tea[type_names][][pairing]" value="Milk">Milk
-      <input type="checkbox" name="tea[type_names][][pairing]" value="Sugar">Sugar
+      <input type="checkbox" name="tea[pairing][][room_for]" value="Cream">Cream
+      <input type="checkbox" name="tea[pairing][][room_for]" value="Honey">Honey
+      <input type="checkbox" name="tea[pairing][][room_for]" value="Lemon">Lemon
+      <input type="checkbox" name="tea[pairing][][room_for]" value="Milk">Milk
+      <input type="checkbox" name="tea[pairing][][room_for]" value="Sugar">Sugar
+      <input type="checkbox" name="tea[pairing][][room_for]" value="None">None
     <br><br>
     <label for="tasting_notes">Tasting Notes:</label>
-      <input type="checkbox" name="tea[type_names][][tasting_notes]" value="Bitter">Bitter
-      <input type="checkbox" name="tea[type_names][][tasting_notes]" value="Citrus">Citrus
-      <input type="checkbox" name="tea[type_names][][tasting_notes]" value="Earthy">Earthy
-      <input type="checkbox" name="tea[type_names][][tasting_notes]" value="Light">Light
-      <input type="checkbox" name="tea[type_names][][tasting_notes]" value="Nutty">Nutty
-      <input type="checkbox" name="tea[type_names][][tasting_notes]" value="Spicy">Spicy
+      <input type="checkbox" name="tea[tasting_notes][][tastes]" value="Bitter">Bitter
+      <input type="checkbox" name="tea[tasting_notes][][tastes]" value="Citrus">Citrus
+      <input type="checkbox" name="tea[tasting_notes][][tastes]" value="Earthy">Earthy
+      <input type="checkbox" name="tea[tasting_notes][][tastes]" value="Light">Light
+      <input type="checkbox" name="tea[tasting_notes][][tastes]" value="Nutty">Nutty
+      <input type="checkbox" name="tea[tasting_notes][][tastes]" value="Spicy">Spicy
     <br><br>
     <label for="brew_time">Brew Time:</label>
-      <input type="textarea" id="brew_time" name="tea[type_names][brew_time]">
+      <input type="textarea" id="brew_time" name="tea[brew_time][brew_info]">
     <br><br>
     <label for="comments">Comments:</label>
       <input type="textarea" name="comments">
