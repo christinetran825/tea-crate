@@ -22,8 +22,7 @@
   <h3>Delete New Tea</h3>
 
   <h4>Your New Tea</h4>
-  <% @teas.types.each do |tea| %>
-    <h2><%=tea.name%></h2>
+  <% @tea.types.each do |tea| %>
     <p>Type: <%=tea.type%></p>
     <p>Origin: <%=tea.origin%></p>
     <p>Brand: <%=tea.brand%></p>
@@ -34,3 +33,5 @@
     <p>Tasting Notes: <%=tea.tasting_notes%></p>
     <p>Comments: <%=tea.comments%></p>
   <% end %>
+
+@tea.types.each do |tea| tea end
