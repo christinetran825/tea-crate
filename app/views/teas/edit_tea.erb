@@ -18,7 +18,7 @@
 
   <h1>Edit Your Tea</h1>
 
-  <form method="post" action="/users/<%=@user.id%>/teas/<%=@tea.id%>">
+  <form method="post" action="/users/<%=@user.id%>/teas/<%=@tea_id%>">
     <input type="hidden" name="_method" value="patch">
     <label for="tea_name">Name:</label>
       <input type="text" id="tea_name" name="tea[tea_name]">
