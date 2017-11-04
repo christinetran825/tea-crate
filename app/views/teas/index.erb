@@ -25,19 +25,6 @@
   <!-- user can edit and delete an exisiting tea -->
   <h4>Your Teas</h4>
 
-  <% @teas.each do |tea| %>
-    <h3><a href="/users/<%=@user.id%>/teas/<%=@tea_id%>"><%=tea.tea_name%></a></h3>
-  <% end %>
-
-  <% @types.each do |tea| %>
-    <p>Type: <%=tea.type_name%></p>
-    <p>Origin: <%=tea.origin%></p>
-    <p>Brand: <%=tea.brand%></p>
-    <p>Leaves: <%=tea.leaves%></p>
-    <p>Caffeine: <%=tea.caffeine%></p>
-    <p>Pairings: <%=tea.pairing%></p>
-    <p>Brew Time: <%=tea.brew_time%></p>
-    <p>Tasting Notes: <%=tea.tasting_notes%></p>
-    <p>Comments: <%=tea.comments%></p>
-    <p><a href="/users/<%=@user.id%>/teas/<%=@tea_id%>/edit">edit</a> | <a href="/users/<%=@user.id%>/teas/<%=@tea_id%>">delete</a> </p>
+  <% @teas.each.with_index do |tea, index| %>
+    <h3> <%=index+1%> <a href="/users/<%=@user.id%>/teas/<%=@tea_id%>"><%=tea.tea_name%></a></h3>
   <% end %>
