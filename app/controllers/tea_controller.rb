@@ -18,7 +18,7 @@ class TeaController < ApplicationController
       redirect "/users/#{@user.id}/teas/new"
     else
       @user = current_user
-      # binding.pry
+      binding.pry
       @tea = Tea.create
       @tea.tea_name = params[:tea][:tea_name]
       @tea.types << Type.create(params[:tea][:type])
