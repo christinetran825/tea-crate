@@ -16,12 +16,10 @@
     <br>
 <!-- end setup Logo and Navigation -->
 
-  <h1>Your New Tea</h1>
+  <h1>Your Tea</h1>
   <br>
-  <h4><a href="/users/<%=@user.id%>/teas/<%=@tea_id%>/edit">Edit New Tea</a>  |  <a href="/users/<%=@user.id%>/teas/<%=@tea_id%>">Delete New Tea</a></h4>
-  <br>
-
-  <h3><%= @tea.tea_name %></h3>
+    <h3> <%=@tea.tea_name%> </h3>
+    <br>
   <% @tea.types.each do |tea| %>
     <p>Type: <%=tea.type_name%></p>
     <p>Origin: <%=tea.origin%></p>
@@ -32,4 +30,5 @@
     <p>Brew Time: <%=tea.brew_time%></p>
     <p>Tasting Notes: <%=tea.tasting_notes%></p>
     <p>Comments: <%=tea.comments%></p>
+    <p><a href="/users/<%=@user.id%>/teas/<%=@tea_id%>/edit">edit</a> | <a href="/users/<%=@user.id%>/teas/<%=@tea_id%>">delete</a> </p>
   <% end %>
