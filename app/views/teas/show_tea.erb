@@ -30,5 +30,5 @@
     <p>Brew Time: <%=tea.brew_time%></p>
     <p>Tasting Notes: <%=tea.tasting_notes%></p>
     <p>Comments: <%=tea.comments%></p>
-    <p><a href="/users/<%=@user.id%>/teas/<%=@tea_id%>/edit">edit</a> | <a href="/users/<%=@user.slug%>/teas/<%=@tea_id%>">delete</a> </p>
+    <p><a href="/users/<%=@user.slug%>/teas/<%=@tea.id%>/edit">edit</a> | <a href="/users/<%=@user.slug%>/teas/<%=@tea_id%>">delete</a> </p>
   <% end %>
