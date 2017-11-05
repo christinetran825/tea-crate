@@ -29,7 +29,6 @@ class TeaController < ApplicationController
   get '/users/:slug/teas/:tea_id' do
     @user = current_user
     @tea = Tea.find(params[:tea_id])
-    @type = Type.find(params[:tea_id])
     # binding.pry
     erb :'/teas/show_tea'
   end
@@ -38,16 +37,15 @@ class TeaController < ApplicationController
     @user = current_user
     # binding.pry
     @tea = Tea.find(params[:tea_id])
-    @type = Type.find(params[:tea_id])
     erb :'/teas/edit_tea'
   end
 
-  patch '/users/:slug/teas/:tea_id' do
+  post '/users/:slug/teas/:tea_id' do
     @user = current_user
     @tea = Tea.find(params[:tea_id])
-    @type = Type.find(params[:tea_id])
     @tea.types.update(params[:tea][:type])
     @tea.save
+    # binding.pry
     redirect "/users/#{@user.slug}/teas/#{@tea.id}"
   end
 
