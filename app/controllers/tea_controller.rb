@@ -28,16 +28,16 @@ class TeaController < ApplicationController
 
   get '/users/:id/teas/:tea_id' do
     @user = current_user
-    @tea.id = Tea.find(params[:tea_id])
-    # binding.pry
+    @tea = Tea.find(params[:tea_id])
     @type = Type.find(params[:tea_id])
+    # binding.pry
     erb :'/teas/show_tea'
   end
 
   get '/users/:id/teas/:tea_id/edit' do
     @user = current_user
-    binding.pry
-    @tea.id = Tea.find(params[:tea_id])
+    # binding.pry
+    @tea = Tea.find(params[:tea_id])
     @type = Type.find(params[:tea_id])
     erb :'/teas/edit_tea'
   end
