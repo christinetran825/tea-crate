@@ -49,7 +49,7 @@ class UserController < ApplicationController
     end
   end
 
-  get '/users/:id' do
+  get '/users/:slug' do
     @user = User.find_by(session[:user_id])
     erb :'/users/show'
   end
