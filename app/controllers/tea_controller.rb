@@ -40,12 +40,12 @@ class TeaController < ApplicationController
     erb :'/teas/edit_tea'
   end
 
-  post '/users/:slug/teas/:tea_id' do
+  patch '/users/:slug/teas/:tea_id' do
     @user = current_user
     @tea = Tea.find(params[:tea_id])
-    @tea.types.update(params[:tea][:type])
+    @tea.types.clear
+    @tea.types << Type.create(params[:tea][:type])
     @tea.save
-    # binding.pry
     redirect "/users/#{@user.slug}/teas/#{@tea.id}"
   end
 
