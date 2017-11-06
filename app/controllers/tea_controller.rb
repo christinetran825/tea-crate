@@ -3,8 +3,6 @@ class TeaController < ApplicationController
   get '/users/:slug/teas' do
     @user = current_user
     @teas = Tea.all
-    @types = Type.all
-    # binding.pry
     erb :'/teas/index'
   end
 
@@ -26,34 +24,33 @@ class TeaController < ApplicationController
     end
   end
 
-  get '/users/:slug/teas/:tea_id' do
+  get '/users/:slug/teas/:id' do
     @user = current_user
-    @tea = Tea.find(params[:tea_id])
-    # binding.pry
+    @tea = Tea.find(params[:id])
     erb :'/teas/show_tea'
   end
 
-  get '/users/:slug/teas/:tea_id/edit' do
+  get '/users/:slug/teas/:id/edit' do
     @user = current_user
-    # binding.pry
-    @tea = Tea.find(params[:tea_id])
+    @tea = Tea.find(params[:id])
+    binding.pry
     erb :'/teas/edit_tea'
   end
 
-  patch '/users/:slug/teas/:tea_id' do
+  patch '/users/:slug/teas/:id' do
     @user = current_user
-    @tea = Tea.find(params[:tea_id])
+    @tea = Tea.find(params[:id])
     @tea.types.clear
     @tea.types << Type.create(params[:tea][:type])
     @tea.save
     redirect "/users/#{@user.slug}/teas/#{@tea.id}"
   end
 
-  delete '/users/:slug/teas/:tea_id' do
+  delete '/users/:slug/teas/:id' do
     @user = current_user
-    @tea = Tea.find(params[:tea_id])
+    @tea = Tea.find(params[:id])
     @tea.destroy
-    redirect "/users/:slug/teas"
+    redirect "/users/#{@user.slug}/teas"
   end
 
 
