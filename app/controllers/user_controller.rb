@@ -18,6 +18,7 @@ class UserController < ApplicationController
       @user.password = params[:password]
       @user.save
       session[:user_id] = @user.slug
+      flash[:message] = "Signup complete!"
       redirect "/users/#{@user.slug}"
     end
   end
@@ -33,7 +34,7 @@ class UserController < ApplicationController
   post '/login' do
     @user = User.find_by_slug(params[:username])
     if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
+      session[:user_id] = @user.slug
       redirect "/users/#{@user.slug}"
     else
       redirect "/login"
