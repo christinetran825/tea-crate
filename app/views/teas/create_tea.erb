@@ -1,55 +1,51 @@
   <h1>Add a New Tea to your Collection</h1>
 
   <form method="post" action="/users/<%=@user.slug%>/teas">
-    <label for="tea_name">Name:</label>
-      <input type="text" id="tea_name" name="tea[tea_name]">
+    <span>Name:</span>
+      <input type="text" id="tea_name" name="tea[tea_name]" value="<%=type.id%>" id="<%=type.id%>">
     <br><br>
-    <label for="brand">Brand:</label>
-      <input type="text" id="brand" name="tea[type][brand]">
+    <span>Brand:</span>
+      <input type="text" id="brand" name="tea[type][brand]" value="<%=type.id%>" id="<%=type.id%>">
     <br><br>
     <span>Types:</span>
     <%@types.each do |type|%>
       <input type="checkbox" name="tea[type][type_name][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.type_name%></input>
     <%end%>
      Or create a new type: <input type="text" name="tea[type][new_type]"/>
-
     <br><br>
-    <label for="origin">Origin:</label>
-      <input type="checkbox" name="tea[type][origin][]" value="China"> China
-      <input type="checkbox" name="tea[type][origin][]" value="India"> India
-      <input type="checkbox" name="tea[type][origin][]" value="Japan"> Japan
-      <input type="checkbox" name="tea[type][origin][]" value="Taiwan"> Taiwan
-      <input type="checkbox" name="tea[type][origin][]" value="Sri Lanka (Ceylon)"> Sri Lanka (Ceylon)
-      <input type="checkbox" name="tea[type][origin][]" value="Unknown"> Unknown or
-      Add a new origin <input type="textarea" name="tea[type][origin][]">
+    <span>Origin:</span>
+    <%@types.each do |type|%>
+      <input type="checkbox" name="tea[type][origin][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.origin%></input>
+    <%end%>
+     Or create a new origin: <input type="text" name="tea[type][new_origin]"/>
     <br><br>
-    <label for="leaves">Leaves:</label>
-      <input type="checkbox" name="tea[type][leaves]" value="Loose Leaf"> Loose Leaf
-      <input type="checkbox" name="tea[type][leaves]" value="Teabag"> Teabag
+    <span>Leaves:</span>
+      <input type="radio" name="tea[type][leaves]" value="Loose Leaf"> Loose Leaf
+      <input type="radio" name="tea[type][leaves]" value="Teabag"> Teabag
     <br><br>
-    <label for="caffeine">Caffeine:</label>
-      <input type="checkbox" name="tea[type][caffeine]" value="Caffeine"> Caffeine
-      <input type="checkbox" name="tea[type][caffeine]" value="Caffeine-Free"> Caffeine-Free
+    <span>Caffeine:</span>
+      <input type="radio" name="tea[type][caffeine]" value="Caffeine"> Caffeine
+      <input type="radio" name="tea[type][caffeine]" value="Caffeine-Free"> Caffeine-Free
     <br><br>
-    <label for="pairing">Pairings:</label>
+    <span>Pairings:</span>
       <input type="checkbox" name="tea[type][pairing][]" value="Cream"> Cream
       <input type="checkbox" name="tea[type][pairing][]" value="Honey"> Honey
       <input type="checkbox" name="tea[type][pairing][]" value="Lemon"> Lemon
       <input type="checkbox" name="tea[type][pairing][]" value="Milk"> Milk
       <input type="checkbox" name="tea[type][pairing][]" value="Sugar"> Sugar
       <input type="checkbox" name="tea[type][pairing][]" value="None"> None or
-      Add a new pairing <input type="textarea" name="tea[type][origin][]">
+      Or create a new pairing: <input type="text" name="tea[type][new_pairing]"/>
     <br><br>
-    <label for="brew_time">Brew Time:</label>
+    <span>Brew Time:</span>
       <input type="textarea" name="tea[type][brew_time][]" value="# of scoops/teabags">
       <input type="textarea" name="tea[type][brew_time][]" value="# of cups">
       <input type="textarea" name="tea[type][brew_time][]" value="temperature">
       <input type="textarea" name="tea[type][brew_time][]" value="time">
     <br><br>
-    <label for="tasting_notes">Tasting Notes:</label>
+    <span>Tasting Notes:</span>
       <input type="textarea" name="tea[type][tasting_notes][]">
     <br><br>
-    <label for="comments">Comments:</label>
+    <span>Comments:</span>
       <input type="textarea" name="tea[type][comments]">
     <br><br>
     <input type="submit" value="Add to Crate">
