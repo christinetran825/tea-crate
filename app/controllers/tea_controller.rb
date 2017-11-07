@@ -4,8 +4,8 @@ class TeaController < ApplicationController
     # if !logged_in?
     #   redirect '/login'
     # else
-      @user = current_user
-      @teas = Tea.all
+      @user = User.find_by(username: params[:slug])
+      @teas = @user.teas
       erb :'/teas/index'
     # end
   end
@@ -14,7 +14,8 @@ class TeaController < ApplicationController
     # if !logged_in?
     #   redirect '/login'
     # else
-      @user = current_user
+    @types = Type.all
+      @user = User.find_by(username: params[:slug])
       erb :'/teas/create_tea'
     # end
   end
@@ -23,7 +24,7 @@ class TeaController < ApplicationController
     if params.has_key?("")
     redirect "/users/#{@user.slug}/teas/new"
     else
-      @user = current_user
+      @user = User.find_by(username: params[:slug])
       @tea = Tea.create
       @tea.tea_name = params[:tea][:tea_name]
       @tea.types << Type.create(params[:tea][:type])
@@ -37,7 +38,7 @@ class TeaController < ApplicationController
     # if !logged_in?
     #   redirect '/login'
     # else
-      @user = current_user
+      @user = User.find_by(username: params[:slug])
       @tea = Tea.find(params[:id])
       @message = session[:message]
       session[:message] = nil
@@ -46,7 +47,7 @@ class TeaController < ApplicationController
   end
 
   get '/users/:slug/teas/:id/edit' do
-    @user = current_user
+    @user = User.find_by(username: params[:slug])
     @tea = Tea.find(params[:id])
     erb :'/teas/edit_tea'
     # if !logged_in?
@@ -63,7 +64,7 @@ class TeaController < ApplicationController
   end
 
   patch '/users/:slug/teas/:id' do
-    @user = current_user
+    @user = User.find_by(username: params[:slug])
     @tea = Tea.find(params[:id])
     @tea.types.clear
     @tea.types << Type.create(params[:tea][:type])
@@ -76,7 +77,7 @@ class TeaController < ApplicationController
     # if !logged_in?
     #   redirect '/login'
     # else
-      @user = current_user
+      @user = User.find_by(username: params[:slug])
       @tea = Tea.find(params[:id])
       @tea.delete
       redirect "/users/#{@user.slug}/teas"
