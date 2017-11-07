@@ -33,7 +33,6 @@ class UserController < ApplicationController
 
   post '/login' do
     @user = User.find_by_slug(params[:username])
-    # binding.pry
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect "/users/#{@user.slug}"
@@ -52,9 +51,7 @@ class UserController < ApplicationController
   end
 
   get '/users/:slug' do
-    #binding.pry
-    #@user = User.find_by(session[:user_id])
-    @user = User.find_by(username: params[:slug])
+    @user = current_user
     erb :'/users/show'
   end
 
