@@ -1,6 +1,10 @@
+  <% if flash.has?(:message) %>
+    <h3><%= flash[:message] %></h3>
+  <% end %>
+
   <h1>Welcome, <%=@user.username.capitalize%></h1>
 
   <br>
-  <!-- <h4><a href="/teas">Your Tea Crate</a></h4> -->
-  <h4><a href="/users/<%=@user.slug%>/teas">Your Tea Crate</a></h4>
-  <h4>Brew timer?</h4>
+  <h3><a href="/users/<%=@user.slug%>/teas">Your Tea Crate</a></h3>
+  <br>
+  <h3>Brew timer?</h3>
