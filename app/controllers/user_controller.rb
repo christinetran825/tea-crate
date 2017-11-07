@@ -18,13 +18,13 @@ class UserController < ApplicationController
       @user.password = params[:password]
       @user.save
       session[:user_id] = @user.id
-      flash[:message] = "Signup complete!"
       redirect "/users/#{@user.slug}"
     end
   end
 
   get '/login' do
     if !logged_in?
+      flash[:message] = "Username and/or Password is incorrect! Try again."
       erb :'/users/login'
     else
       redirect "/users/#{@user.slug}"
@@ -52,6 +52,7 @@ class UserController < ApplicationController
 
   get '/users/:slug' do
     @user = User.find_by(username: params[:slug])
+    flash[:message] = "Signup complete!"
     erb :'/users/show'
   end
 
