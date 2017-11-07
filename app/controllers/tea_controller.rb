@@ -1,19 +1,27 @@
 class TeaController < ApplicationController
 
   get '/users/:slug/teas' do
-    @user = current_user
-    @teas = Tea.all
-    erb :'/teas/index'
+    if !logged_in?
+      redirect '/login'
+    else
+      @user = current_user
+      @teas = Tea.all
+      erb :'/teas/index'
+    end
   end
 
   get '/users/:slug/teas/new' do
-    @user = current_user
-    erb :'/teas/create_tea'
+    if !logged_in?
+      redirect '/login'
+    else
+      @user = current_user
+      erb :'/teas/create_tea'
+    end
   end
 
   post '/users/:slug/teas' do
     if params.has_key?("")
-      redirect "/users/#{@user.slug}/teas/new"
+    redirect "/users/#{@user.slug}/teas/new"
     else
       @user = current_user
       @tea = Tea.create
@@ -25,16 +33,27 @@ class TeaController < ApplicationController
   end
 
   get '/users/:slug/teas/:id' do
-    @user = current_user
-    @tea = Tea.find(params[:id])
-    erb :'/teas/show_tea'
+    if !logged_in?
+      redirect '/login'
+    else
+      @user = current_user
+      @tea = Tea.find(params[:id])
+      erb :'/teas/show_tea'
+    end
   end
 
   get '/users/:slug/teas/:id/edit' do
-    @user = current_user
-    @tea = Tea.find(params[:id])
-    binding.pry
-    erb :'/teas/edit_tea'
+    if !logged_in?
+      redirect '/login'
+    else
+      @user = current_user
+      @tea = Tea.find(params[:id])
+      if @tea.user_id == current_user.id
+        erb :'/teas/edit_tea'
+      else
+        redirect :'/teas'
+      end
+    end
   end
 
   patch '/users/:slug/teas/:id' do
@@ -47,10 +66,14 @@ class TeaController < ApplicationController
   end
 
   delete '/users/:slug/teas/:id' do
-    @user = current_user
-    @tea = Tea.find(params[:id])
-    @tea.destroy
-    redirect "/users/#{@user.slug}/teas"
+    if !logged_in?
+      redirect '/login'
+    else
+      @user = current_user
+      @tea = Tea.find(params[:id])
+      @tea.destroy
+      redirect "/users/#{@user.slug}/teas"
+    end
   end
 
 
