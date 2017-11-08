@@ -28,7 +28,6 @@ class TeaController < ApplicationController
       @tea = Tea.create
       @tea.tea_name = params[:tea][:tea_name]
       @tea.types << Type.create(params[:tea][:type])
-      binding.pry
       @tea.save
       flash[:message] = "New Tea added to crate!"
       redirect "/users/#{@user.slug}/teas/#{@tea.id}"
@@ -41,7 +40,6 @@ class TeaController < ApplicationController
     else
       @user = current_user
       @tea = Tea.find(params[:id])
-      # binding.pry
       @message = session[:message]
       session[:message] = nil
       erb :'/teas/show_tea'
@@ -62,7 +60,12 @@ class TeaController < ApplicationController
   patch '/users/:slug/teas/:id' do
     @user = current_user
     @tea = Tea.find(params[:id])
-    # # @types = Type.find(params[:id])
+    @tea.type = Type.find(params[:id])
+    # binding.pry
+    # @types.clear
+    # @tea = Tea.create
+    # @tea.tea_name = params[:tea][:tea_name]
+    # @tea.types << Type.create(params[:tea][:type])
     # @tea.types.clear
     # @tea.types << Type.create(params[:tea][:type])
     # @tea.save
