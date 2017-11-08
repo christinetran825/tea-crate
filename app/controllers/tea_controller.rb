@@ -5,7 +5,9 @@ class TeaController < ApplicationController
       redirect '/login'
     else
       @user = current_user
+      # session[:user_id] = @user.id
       @teas = @user.teas
+      # binding.pry
       erb :'/teas/index'
     end
   end
@@ -40,8 +42,8 @@ class TeaController < ApplicationController
     else
       @user = current_user
       @tea = Tea.find(params[:id])
-      @message = session[:message]
-      session[:message] = nil
+      # @message = session[:message]
+      # session[:message] = nil
       erb :'/teas/show_tea'
     end
   end
@@ -52,7 +54,6 @@ class TeaController < ApplicationController
     else
       @user = current_user
       @tea = Tea.find(params[:id])
-      @types = Type.find(params[:id])
       erb :'/teas/edit_tea'
     end
   end
@@ -60,29 +61,24 @@ class TeaController < ApplicationController
   patch '/users/:slug/teas/:id' do
     @user = current_user
     @tea = Tea.find(params[:id])
-    @tea.type = Type.find(params[:id])
-    # binding.pry
-    # @types.clear
-    # @tea = Tea.create
-    # @tea.tea_name = params[:tea][:tea_name]
-    # @tea.types << Type.create(params[:tea][:type])
-    # @tea.types.clear
-    # @tea.types << Type.create(params[:tea][:type])
-    # @tea.save
+    @tea.types.clear
+    @tea.types << Type.create(params[:tea][:type])
+    @tea.save
     flash[:message] = "Your Tea has been updated!"
     redirect "/users/#{@user.slug}/teas/#{@tea.id}"
   end
-  #
-  # delete '/users/:slug/teas/:id' do
-  #   # if !logged_in?
-  #   #   redirect '/login'
-  #   # else
-  #     @user = current_user
-  #     @tea = Tea.find(params[:id])
-  #     @tea.delete
-  #     redirect "/users/#{@user.slug}/teas"
-  #   # end
-  # end
+
+  delete '/users/:slug/teas/:id/delete' do
+    if !logged_in?
+      redirect '/login'
+    else
+      @user = current_user
+      @tea = Tea.find(params[:id])
+      @tea.delete
+      flash[:message] = "Your Tea has been removed from your crate!"
+      redirect "/users/#{@user.slug}/teas"
+    end
+  end
 
 
 end
