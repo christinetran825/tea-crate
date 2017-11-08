@@ -52,7 +52,6 @@ class UserController < ApplicationController
 
   get '/users/:slug' do
     @user = User.find_by(username: params[:slug])
-    flash[:message] = "Signup complete!"
     erb :'/users/show'
   end
 
