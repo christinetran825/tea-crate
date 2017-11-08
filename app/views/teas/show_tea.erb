@@ -1,8 +1,8 @@
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
-
-  <h1>Your Tea</h1>
+  <h1>Your Tea Tin</h1>
+  <br>
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
   <br>
     <h3> <%=@tea.tea_name%> </h3>
     <br>
