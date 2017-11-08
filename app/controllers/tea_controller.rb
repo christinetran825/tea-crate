@@ -61,6 +61,7 @@ class TeaController < ApplicationController
   patch '/users/:slug/teas/:id' do
     @user = current_user
     @tea = Tea.find(params[:id])
+    @tea.tea_name = params[:tea][:tea_name]
     @tea.types.clear
     @tea.types << Type.create(params[:tea][:type])
     @tea.save
