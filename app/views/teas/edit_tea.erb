@@ -14,13 +14,13 @@
     <%@tea.types.each do |type|%>
       <input type="checkbox" name="tea[type][type_name][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.type_name%></input>
     <%end%>
-     Or create a new type: <input type="text" name="tea[type][new_type]"/>
+     Or create a new type: <input type="text" name="tea[type][type_name]"/>
     <br><br>
     <span>Origin:</span>
     <%@tea.types.each do |type|%>
       <input type="checkbox" name="tea[type][origin][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.origin%></input>
     <%end%>
-     Or create a new origin: <input type="text" name="tea[type][new_origin]"/>
+     Or create a new origin: <input type="text" name="tea[type][origin]"/>
     <br><br>
     <span>Leaves:</span>
       <input type="radio" name="tea[type][leaves]" value="Loose Leaf"> Loose Leaf
@@ -34,7 +34,7 @@
     <%@tea.types.each do |type|%>
       <input type="checkbox" name="tea[type][pairing][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.pairing%></input>
     <%end%>
-      Or create a new pairing: <input type="text" name="tea[type][new_pairing]"/>
+      Or create a new pairing: <input type="text" name="tea[type][pairing]"/>
     <br><br>
     <span>Brew Time:</span>
       <input type="text" name="tea[type][brew_time][]" value="# of scoops/teabags">
