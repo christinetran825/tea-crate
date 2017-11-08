@@ -1,4 +1,9 @@
   <h1>Your Tea Crate</h1>
+  <br>
+  <% if flash.has?(:message) %>
+    <h3><%= flash[:message] %></h3>
+  <% end %>
+  <br>
 
   <h3><a href="/users/<%=@user.slug%>/teas/new">Add a New Tea to Your Collection</a></h3>
 
