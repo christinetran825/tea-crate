@@ -17,4 +17,11 @@
     <p>Tasting Notes: <%=the_tea.tasting_notes%></p>
     <p>Comments: <%=the_tea.comments%></p>
   <% end %>
-  <p><a href="/users/<%=@user.slug%>/teas/<%=@tea.id%>/edit">edit</a> | <a href="/users/<%=@user.slug%>/teas/<%=@tea.id%>">delete</a> </p>
+
+  <form method="post" action="/users/<%=@user.slug%>/teas/<%=@tea.id%>/delete">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete This Tea">
+  </form>
+
+  <p><a href="/users/<%=@user.slug%>/teas/<%=@tea.id%>/edit">Edit This Tea</a></p>
+  <p><a href="/users/<%=@user.slug%>/teas">See all your teas</a></p>
