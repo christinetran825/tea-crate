@@ -1,4 +1,4 @@
-  <h1>Your Tea Crate</h1>
+  <h1>Welcome, <%=@user.username.capitalize%></h1>
   <br>
   <% if flash.has?(:message) %>
     <h3><%= flash[:message] %></h3>
