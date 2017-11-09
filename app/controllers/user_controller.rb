@@ -5,14 +5,14 @@ class UserController < ApplicationController
       erb :'/users/signup'
     else
       flash[:message] = "You're logged in. Here are your teas."
-      redirect "/users/#{@user.slug}"
+      redirect "/users/#{@user.slug}/teas"
     end
   end
 
   post '/signup' do
     if logged_in?
       flash[:message] = "You're logged in. Here are your teas."
-      redirect "/users/#{@user.slug}"
+      redirect "/users/#{@user.slug}/teas"
     elsif params.has_value?("")
       flash[:message] = "You must create both a username and password, and enter your email."
       redirect "/signup"
@@ -23,7 +23,7 @@ class UserController < ApplicationController
       @user.password = params[:password]
       @user.save
       session[:user_id] = @user.id
-      redirect "/users/#{@user.slug}"
+      redirect "/users/#{@user.slug}/teas"
     end
   end
 
@@ -32,7 +32,7 @@ class UserController < ApplicationController
       erb :'/users/login'
     else
       flash[:message] = "You're logged in. Here are your teas."
-      redirect "/users/#{@user.slug}"
+      redirect "/users/#{@user.slug}/teas"
     end
   end
 
@@ -40,7 +40,7 @@ class UserController < ApplicationController
     @user = User.find_by_slug(params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect "/users/#{@user.slug}"
+      redirect "/users/#{@user.slug}/teas"
     else
       flash[:message] = "Username and/or Password is incorrect! Try again."
       redirect "/login"
@@ -55,11 +55,6 @@ class UserController < ApplicationController
       flash[:message] = "You have been logged out of your account."
       redirect "/login"
     end
-  end
-
-  get '/users/:slug' do
-    @user = User.find_by(username: params[:slug])
-    erb :'/users/show'
   end
 
 end
