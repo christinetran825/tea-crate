@@ -42,8 +42,6 @@ class TeaController < ApplicationController
     else
       @user = current_user
       @tea = Tea.find(params[:id])
-      # @message = session[:message]
-      # session[:message] = nil
       erb :'/teas/show_tea'
     end
   end
@@ -64,14 +62,10 @@ class TeaController < ApplicationController
     @tea.tea_name = params[:tea][:tea_name]
     @type = Type.find(params[:id])
     @type.update(params[:tea][:type])
-    # @tea.types.clear
-    # @tea.types << Type.create(params[:tea][:type])
     @tea.save
     flash[:message] = "Your Tea has been updated!"
     redirect "/users/#{@user.slug}/teas/#{@tea.id}"
   end
-
-
 
   delete '/users/:slug/teas/:id/delete' do
     if !logged_in?
