@@ -31,7 +31,7 @@ class TeaController < ApplicationController
     #  @tea.save
      @type = Type.create(params[:tea][:type])
      @tea.types << @type
-     @type.tea_id = @tea.id
+     @tea.id = @type.tea_id
      @tea.save
      flash[:message] = "New Tea added to crate!"
      redirect "/users/#{@user.slug}/teas/#{@tea.id}"
