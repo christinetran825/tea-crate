@@ -21,30 +21,27 @@ class TeaController < ApplicationController
 
   post '/users/:slug/teas' do
     if params.values.any? {|value| value == ""}
-      flash[:message] = "Please enter all fields."
-      redirect "/users/#{@user.slug}/teas/new"
-    else
-      user = current_user
-      @tea = Tea.create
-      @tea.tea_name = params[:tea][:tea_name]
-      @tea.user_id = user.id
-      # binding.pry
-      @tea.save
-      @type = Type.create(params[:tea][:type])
-      @tea.types << @type
-      @tea.save
-      flash[:message] = "New Tea added to crate!"
-      # binding.pry
-      redirect "/users/#{@user.slug}/teas/#{@tea.id}"
-    end
+     flash[:message] = "Please enter all fields."
+     redirect "/users/#{@user.slug}/teas/new"
+   else
+     user = current_user
+     @tea = Tea.create
+     @tea.tea_name = params[:tea][:tea_name]
+     @tea.user_id = user.id
+    #  @tea.save
+     @type = Type.create(params[:tea][:type])
+     @tea.types << @type
+     @type.tea_id = @tea.id
+     @tea.save
+     flash[:message] = "New Tea added to crate!"
+     redirect "/users/#{@user.slug}/teas/#{@tea.id}"
+   end
   end
 
   get '/users/:slug/teas/:id' do
     if logged_in?
       @user = current_user
       @tea = Tea.find(params[:id])
-      # binding.pry
-      # @type = Type.find(params[:id])
       erb :'/teas/show_tea'
     else
       redirect '/login'
@@ -73,9 +70,10 @@ class TeaController < ApplicationController
       @user = current_user
       @tea = Tea.find(params[:id])
       # binding.pry
-      @tea.tea_name = params[:tea][:tea_name] #tea_name can change
-      @tea.types = params[:tea][:type] #tea types can change
-      @tea.save
+      # @tea.tea_name = params[:tea][:tea_name]
+      # @type = Type.find(params[:tea][:type_id])
+      # @tea.types << @type.update(params[:tea][:type])
+      # @tea.save
       flash[:message] = "Your Tea has been updated!"
       redirect "/users/#{@user.slug}/teas/#{@tea.id}"
     end
