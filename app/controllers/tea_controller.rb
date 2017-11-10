@@ -24,11 +24,13 @@ class TeaController < ApplicationController
 
   post '/users/:slug/teas' do
     if params.has_key?("")
-    redirect "/users/#{@user.slug}/teas/new"
+      flash[:message] = "Please enter all fields."
+      redirect "/users/#{@user.slug}/teas/new"
     else
       @user = current_user
       @tea = Tea.create
       @tea.tea_name = params[:tea][:tea_name]
+      @tea.user_id = user.id
       @tea.types << Type.create(params[:tea][:type])
       @tea.save
       flash[:message] = "New Tea added to crate!"
@@ -52,19 +54,28 @@ class TeaController < ApplicationController
     else
       @user = current_user
       @tea = Tea.find(params[:id])
-      erb :'/teas/edit_tea'
+      if @tea.user_id == session[:user_id]
+        erb :'/teas/edit_tea'
+      else
+        erb :'/teas/index'
+      end
     end
   end
 
   patch '/users/:slug/teas/:id' do
-    @user = current_user
-    @tea = Tea.find(params[:id])
-    @tea.tea_name = params[:tea][:tea_name]
-    @type = Type.find(params[:id])
-    @type.update(params[:tea][:type])
-    @tea.save
-    flash[:message] = "Your Tea has been updated!"
-    redirect "/users/#{@user.slug}/teas/#{@tea.id}"
+    if params.has_key?("")
+      flash[:message] = "Please enter all fields."
+      redirect "/users/#{@user.slug}/teas/edit"
+    else
+      @user = current_user
+      @tea = Tea.find(params[:id])
+      binding.pry
+      @tea.tea_name = params[:tea][:tea_name] #tea_name can change
+      # @tea.types = params[:tea][:type] #tea types can change
+      @tea.save
+      flash[:message] = "Your Tea has been updated!"
+      redirect "/users/#{@user.slug}/teas/#{@tea.id}"
+    end
   end
 
   delete '/users/:slug/teas/:id/delete' do
@@ -73,9 +84,13 @@ class TeaController < ApplicationController
     else
       @user = current_user
       @tea = Tea.find(params[:id])
-      @tea.delete
-      flash[:message] = "Your Tea has been removed from your crate!"
-      redirect "/users/#{@user.slug}/teas"
+      if @tea.user_id == session[:user_id]
+        @tea.delete
+        flash[:message] = "Your Tea has been removed from your crate!"
+        redirect "/users/#{@user.slug}/teas"
+      else
+        redirect "/users/#{@user.slug}/teas"
+      end
     end
   end
 
