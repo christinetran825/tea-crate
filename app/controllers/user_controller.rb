@@ -10,19 +10,21 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
-    if logged_in?
-      flash[:message] = "You're logged in. Here are your teas."
-      redirect "/users/#{@user.slug}/teas"
-    elsif params.has_value?("")
-      flash[:message] = "You must create both a username and password, and enter your email."
-      redirect "/signup"
+    if !logged_in?
+      flash[:message] = "You're not logged in. Please Log in or create an account."
+      redirect "/"
     else
+      if params.has_value?("")
+        flash[:message] = "You must create both a username and password."
+        redirect "/signup"
+      end
       @user = User.create
       @user.username = params[:username]
       @user.email = params[:email]
       @user.password = params[:password]
       @user.save
       session[:user_id] = @user.id
+      flash[:message] = "You're logged in. Here are your teas."
       redirect "/users/#{@user.slug}/teas"
     end
   end
@@ -51,7 +53,7 @@ class UserController < ApplicationController
     if !logged_in?
       redirect "/"
     else
-      session.clear
+      session.destroy
       flash[:message] = "You have been logged out of your account."
       redirect "/login"
     end
