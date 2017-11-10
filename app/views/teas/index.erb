@@ -12,7 +12,7 @@
   <!-- user can edit and delete an exisiting tea -->
   <h4>Your Teas</h4>
 
-  <% @teas.each.with_index do |tea, index| %>
+  <% @user.teas.each.with_index do |tea, index| %>
     <div>
       <h3> <%= index+1 %> <a href="/users/<%=@user.slug%>/teas/<%=@tea.id%>"><%= tea.tea_name %></a></h3>
       <p>Brand: <%= tea.type.brand %> </p>
