@@ -32,8 +32,6 @@ class TeaController < ApplicationController
      @type.tea_id = @tea.id
      @tea.types << @type
      @tea.save
-    #  @type.save
-    #  binding.pry
      flash[:message] = "New Tea added to crate!"
      redirect "/users/#{@user.slug}/teas/#{@tea.id}"
    end
@@ -64,9 +62,9 @@ class TeaController < ApplicationController
   end
 
   patch '/users/:slug/teas/:id' do
-    if params.has_value?("")
+    if params.values.any? {|value| value == ""}
       flash[:message] = "Please enter all fields."
-      redirect "/users/#{@user.slug}/teas/edit"
+      redirect "/users/#{@user.slug}/teas/#{@tea.id}/edit"
     else
       @user = current_user
       @tea = Tea.find(params[:id])
@@ -83,7 +81,7 @@ class TeaController < ApplicationController
     if logged_in?
       @user = current_user
       @tea = Tea.find(params[:id])
-      @type = Type.find(params[:type_id])
+      @type = Type.find(params[:id])
       if @tea.user_id == session[:user_id]
         @tea.delete
         @type.delete
