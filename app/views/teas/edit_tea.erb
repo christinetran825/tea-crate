@@ -1,5 +1,10 @@
   <h1>Edit Your Tea</h1>
 
+  <% if flash.has?(:message) %>
+    <h3><%= flash[:message] %></h3>
+  <% end %>
+  <br>
+
   <h3> <%=@tea.tea_name%></h3>
   <br>
   <form method="post" action="/users/<%=@user.slug%>/teas/<%=@tea.id%>">
