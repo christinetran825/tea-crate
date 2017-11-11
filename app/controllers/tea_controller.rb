@@ -28,11 +28,12 @@ class TeaController < ApplicationController
      @tea = Tea.create
      @tea.tea_name = params[:tea][:tea_name]
      @tea.user_id = user.id
-    #  @tea.save
      @type = Type.create(params[:tea][:type])
+     @type.tea_id = @tea.id
      @tea.types << @type
-     @tea.id = @type.tea_id
      @tea.save
+    #  @type.save
+    #  binding.pry
      flash[:message] = "New Tea added to crate!"
      redirect "/users/#{@user.slug}/teas/#{@tea.id}"
    end
@@ -69,7 +70,7 @@ class TeaController < ApplicationController
     else
       @user = current_user
       @tea = Tea.find(params[:id])
-      # binding.pry
+      binding.pry
       # @tea.tea_name = params[:tea][:tea_name]
       # @type = Type.find(params[:tea][:type_id])
       # @tea.types << @type.update(params[:tea][:type])
