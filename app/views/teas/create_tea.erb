@@ -13,15 +13,13 @@
       <input type="checkbox" name="tea[type][type_name][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.type_name%></input>
     <%end%>
      Or create a new type: <input type="text" name="tea[type][type_name]"/>
-     <br><br>Please enter Black(Red), Green, Oolong, Pu-erh, Tisane(Herbals), White, Yellow, or Unknown
-    <br><br>
+     <br><br><p class="notes">Please enter Black(Red), Green, Oolong, Pu-erh, Tisane(Herbals), White, Yellow, or Unknown</p>
     <span>Origin:</span>
     <%@types.each do |type|%>
       <input type="checkbox" name="tea[type][origin][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.origin%></input>
     <%end%>
      Or create a new origin: <input type="text" name="tea[type][origin]"/>
-     <br><br>Please enter China, Japan, India, Sri Lanka(Ceylon), Taiwan, or Unknown
-    <br><br>
+     <br><br><p class="notes">Please enter China, Japan, India, Sri Lanka(Ceylon), Taiwan, or Unknown</p>
     <span>Leaves:</span>
       <input type="radio" name="tea[type][leaves]" value="Loose Leaf"> Loose Leaf
       <input type="radio" name="tea[type][leaves]" value="Teabag"> Teabag
