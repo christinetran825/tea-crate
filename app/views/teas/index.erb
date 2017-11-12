@@ -14,7 +14,6 @@
 
   <% @user.teas.each.with_index do |tea, index| %>
     <div>
-      <h3> <%= index+1 %> <a href="/users/<%=@user.slug%>/teas/<%=@tea.id%>"><%= tea.tea_name %></a></h3>
-      <p>Brand: <%= tea.type.brand %> </p>
+      <h3> <%= index+1 %> <a href="/users/<%=@user.slug%>/teas/<%=@tea_id%>"><%= tea.tea_name %></a></h3>
     </div>
   <% end %>
