@@ -89,6 +89,11 @@
     margin-bottom: 18px;
   }
 
+  p.notes {
+    font-size: 12px;
+    color: rgb(129, 175, 123);
+  }
+
   .main {
     overflow: hidden;
   }
