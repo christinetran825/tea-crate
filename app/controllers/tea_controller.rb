@@ -33,7 +33,7 @@ class TeaController < ApplicationController
      @tea.types << @type
      @tea.save
      flash[:message] = "New Tea added to crate!"
-     redirect "/users/#{@user.slug}/teas/#{@tea.id}"
+     redirect "/users/#{params[:slug]}/teas/#{@tea.id}"
    end
   end
 
