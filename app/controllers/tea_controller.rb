@@ -51,11 +51,8 @@ class TeaController < ApplicationController
     if logged_in?
       @user = current_user
       @tea = Tea.find(params[:id])
-      if @tea.user_id == session[:user_id]
+      @tea.user_id == session[:user_id]
         erb :'/teas/edit_tea'
-      else
-        erb :'/teas/index'
-      end
     else
       redirect '/login'
     end
