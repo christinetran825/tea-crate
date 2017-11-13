@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20171025220400) do
 
   create_table "teas", force: :cascade do |t|
     t.string  "tea_name"
+    t.string  "brand"
     t.integer "user_id"
   end
 
@@ -31,7 +32,6 @@ ActiveRecord::Schema.define(version: 20171025220400) do
     t.string  "pairing"
     t.string  "brew_time"
     t.string  "tasting_notes"
-    t.string  "brand"
     t.string  "comments"
     t.integer "tea_id"
   end

@@ -8,7 +8,6 @@ class CreateTypes < ActiveRecord::Migration
       t.string :pairing
       t.string :brew_time
       t.string :tasting_notes
-      t.string :brand
       t.string :comments
       t.integer :tea_id
     end
