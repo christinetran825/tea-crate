@@ -27,6 +27,7 @@ class TeaController < ApplicationController
      user = current_user
      @tea = Tea.create
      @tea.tea_name = params[:tea][:tea_name]
+     @tea.brand = params[:tea][:brand]
      @tea.user_id = user.id
      @type = Type.create(params[:tea][:type])
      @type.tea_id = @tea.id
