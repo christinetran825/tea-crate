@@ -13,11 +13,11 @@
       <input type="text" id="tea_name" name="tea[tea_name]" value="<%=@tea.tea_name%>"/>
     <br><br>
     <span>Brand:</span>
-      <input type="text" id="brand" name="tea[type][brand]"/>
+      <input type="text" id="brand" name="tea[brand]" value="<%=@tea.brand%>"/>
     <br><br>
     <span>Types:</span>
     <% Type.all.each do |type|%>
-      <input type="checkbox" name="tea[type][type_name][]" value="<%=type.id%>" id="<%=type.id%>"
+      <input type="checkbox" name="tea[type][type_id][]" value="<%=type.id%>" id="<%=type.id%>"
         <%= @tea.types.include?(type) ? "checked" : "" %>><%=type.type_name%></input>
     <%end%>
      Or create a new type: <input type="text" name="tea[type][type_name]"/>
