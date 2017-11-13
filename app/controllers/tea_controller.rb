@@ -68,6 +68,7 @@ class TeaController < ApplicationController
       @user = current_user
       @tea = Tea.find(params[:id])
       @tea.tea_name = params[:tea][:tea_name]
+      @tea.brand = params[:tea][:brand]
       @type = Type.find(params[:tea][:type][:type_id])
       @type.update(params[:tea][:type])
       @tea.save
