@@ -20,7 +20,6 @@ class TeaController < ApplicationController
   end
 
   post '/users/teas' do
-
     if params.values.any? {|value| value == ""}
      flash[:message] = "Please enter all fields."
      redirect "/users/#{current_user.slug}/teas/new"
@@ -28,10 +27,6 @@ class TeaController < ApplicationController
      user = current_user
      @tea = current_user.teas.build(params[:tea])
      @tea.type_ids = params[:type][:type_ids]
-    #  binding.pry
-    #  @type = Type.create(params[:tea][:type])
-    #  @type.tea_id = @tea.id
-    #  @tea.types << @type
      if @tea.save
        flash[:message] = "New Tea added to crate!"
        redirect "/users/#{current_user.slug}/teas/#{@tea.id}"
@@ -63,21 +58,16 @@ class TeaController < ApplicationController
   end
 
   patch '/users/:slug/teas/:id' do
-
     if params.values.any? {|value| value == ""}
       flash[:message] = "Please enter all fields."
-      redirect "/users/#{@user.slug}/teas/#{@tea.id}/edit"
+      redirect "/users/#{current_user.slug}/teas/#{@tea.id}/edit"
     else
-      binding.pry
       @user = current_user
       @tea = Tea.find(params[:id])
-      @tea.tea_name = params[:tea][:tea_name]
-      @tea.brand = params[:tea][:brand]
-      @type = Type.find(params[:tea][:type][:type_id])
-      @type.update(params[:tea][:type])
+      @tea.update(params[:tea][:type])
       @tea.save
       flash[:message] = "Your Tea has been updated!"
-      redirect "/users/#{@user.slug}/teas/#{@tea.id}"
+      redirect "/users/#{current_user.slug}/teas/#{@tea.id}"
     end
   end
 
