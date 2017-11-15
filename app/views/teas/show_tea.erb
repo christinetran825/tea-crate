@@ -5,19 +5,21 @@
   <% end %>
   <br><br>
     <h3> <%=@tea.tea_name%> </h3>
-    <p>Brand: <%=@tea.brand%></p>
-    <p>Origin: <%=@tea.origin%></p>
-    <p>Leaves: <%=@tea.leaves%></p>
-    <p>Caffeine: <%=@tea.caffeine%></p>
-    <p>Pairings: <%=@tea.pairing%></p>
-    <p>Brew Time: <%=@tea.brew_time%></p>
-    <p>Tasting Notes: <%=@tea.tasting_notes%></p>
-    <p>Comments: <%=@tea.comments%></p>
+
     <br>
-  <span>Types:</span>
-  <% @types = @tea.types.map { |t| t.type_name }.join(", ")  %>
-  <%= @types %>
-  
+
+    <span>Brand: </span><%=@tea.brand%></p>
+    <span>Origin: </span><%=@tea.origin%></p>
+    <span>Types: </span><% @types = @tea.types.map { |t| t.type_name }.join(", ") %> <%= @types %></p>
+    <span>Leaves: </span><%=@tea.leaves%></p>
+    <span>Caffeine: </span><%=@tea.caffeine%></p>
+    <span>Pairings: </span><%=@tea.pairing%></p>
+    <span>Brew Time: </span><%=@tea.brew_time%></p>
+    <span>Tasting Notes: </span><%=@tea.tasting_notes%></p>
+    <span>Comments: </span><%=@tea.comments%></p>
+
+  <br><br>
+
   <form method="post" action="/users/<%=@user.slug%>/teas/<%=@tea.id%>/delete">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete This Tea">
