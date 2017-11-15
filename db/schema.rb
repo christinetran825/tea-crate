@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025220400) do
+ActiveRecord::Schema.define(version: 20171115201809) do
 
   create_table "tea_types", force: :cascade do |t|
     t.integer "tea_id"
@@ -22,10 +22,6 @@ ActiveRecord::Schema.define(version: 20171025220400) do
     t.string  "tea_name"
     t.string  "brand"
     t.integer "user_id"
-  end
-
-  create_table "types", force: :cascade do |t|
-    t.string  "type_name"
     t.string  "origin"
     t.string  "leaves"
     t.string  "caffeine"
@@ -33,7 +29,10 @@ ActiveRecord::Schema.define(version: 20171025220400) do
     t.string  "brew_time"
     t.string  "tasting_notes"
     t.string  "comments"
-    t.integer "tea_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "type_name"
   end
 
   create_table "users", force: :cascade do |t|

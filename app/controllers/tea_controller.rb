@@ -19,22 +19,25 @@ class TeaController < ApplicationController
     end
   end
 
-  post '/users/:slug/teas' do
+  post '/users/teas' do
+
     if params.values.any? {|value| value == ""}
      flash[:message] = "Please enter all fields."
-     redirect "/users/#{@user.slug}/teas/new"
+     redirect "/users/#{current_user.slug}/teas/new"
    else
      user = current_user
-     @tea = Tea.create
-     @tea.tea_name = params[:tea][:tea_name]
-     @tea.brand = params[:tea][:brand]
-     @tea.user_id = user.id
-     @type = Type.create(params[:tea][:type])
-     @type.tea_id = @tea.id
-     @tea.types << @type
-     @tea.save
-     flash[:message] = "New Tea added to crate!"
-     redirect "/users/#{params[:slug]}/teas/#{@tea.id}"
+     @tea = current_user.teas.build(params[:tea])
+     @tea.type_ids = params[:type][:type_ids]
+    #  binding.pry
+    #  @type = Type.create(params[:tea][:type])
+    #  @type.tea_id = @tea.id
+    #  @tea.types << @type
+     if @tea.save
+       flash[:message] = "New Tea added to crate!"
+       redirect "/users/#{current_user.slug}/teas/#{@tea.id}"
+     else
+       redirect "/users/#{current_user.slug}/teas/new"
+     end
    end
   end
 
