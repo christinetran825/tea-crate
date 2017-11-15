@@ -6,10 +6,8 @@
   <br>
 
   <h3><a href="/users/<%=@user.slug%>/teas/new">Add a New Tea to Your Collection</a></h3>
+  <br>
 
-  <!-- user can sort by tea name(abc order), type, origin, or brands -->
-  <!-- user can search by tea name -->
-  <!-- user can edit and delete an exisiting tea -->
   <h4>Your Teas</h4>
 
   <% @user.teas.each.with_index do |tea, index| %>
