@@ -6,7 +6,7 @@
   <br>
 
   <h3> <%=@tea.tea_name%></h3>
-  <br>
+  <br><br>
   <form method="post" action="/users/<%=@user.slug%>/teas/<%=@tea.id%>">
     <input type="hidden" name="_method" value="patch">
     <span>Name:</span>
@@ -14,33 +14,32 @@
     <br><br>
     <span>Brand:</span>
       <input type="text" id="brand" name="tea[brand]" value="<%=@tea.brand%>"/>
+      Or create a new brand: <input type="text" name="tea[brand]"/>
     <br><br>
     <span>Types:</span>
-    <% Type.all.each do |type|%>
-      <input type="checkbox" name="tea[type][type_id][]" value="<%=type.id%>" id="<%=type.id%>"
-        <%= @tea.types.include?(type) ? "checked" : "" %>><%=type.type_name%></input>
+
+    <% @tea.types.each do |type| %>
+      <input type="checkbox" name="type[type_ids][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.type_name%></input>
     <%end%>
-     Or create a new type: <input type="text" name="tea[type][type_name]"/>
+     Or create a new type: <input type="text" name="type[type_name]"/>
     <br><br>
     <span>Origin:</span>
-    <%@tea.types.each do |type|%>
-      <input type="checkbox" name="tea[type][origin][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.origin%></input>
-    <%end%>
-     Or create a new origin: <input type="text" name="tea[type][origin]"/>
+      <input type="text" name="tea[origin]" value="<%=@tea.origin%>"/>
+     Or create a new origin: <input type="text" name="tea[origin]"/>
     <br><br>
     <span>Leaves:</span>
-      <input type="radio" name="tea[type][leaves]" value="Loose Leaf"> Loose Leaf
-      <input type="radio" name="tea[type][leaves]" value="Teabag"> Teabag
+      <input type="radio" name="tea[leaves]" value="Loose Leaf"> Loose Leaf
+      <input type="radio" name="tea[leaves]" value="Teabag"> Teabag
     <br><br>
     <span>Caffeine:</span>
-      <input type="radio" name="tea[type][caffeine]" value="Caffeine"> Caffeine
-      <input type="radio" name="tea[type][caffeine]" value="Caffeine-Free"> Caffeine-Free
+      <input type="radio" name="tea[caffeine]" value="Caffeine"> Caffeine
+      <input type="radio" name="tea[caffeine]" value="Caffeine-Free"> Caffeine-Free
     <br><br>
     <span>Pairings:</span>
     <%@tea.types.each do |type|%>
-      <input type="checkbox" name="tea[type][pairing][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.pairing%></input>
+      <input type="text" name="tea[pairing][]" value="<%=@tea.pairing%>"/>
     <%end%>
-      Or create a new pairing: <input type="text" name="tea[type][pairing]"/>
+      Or create a new pairing: <input type="text" name="tea[pairing]"/>
     <br><br>
     <span>Brew Time:</span>
       <input type="text" name="tea[type][brew_time][]" value="# of scoops/teabags">
@@ -49,10 +48,10 @@
       <input type="text" name="tea[type][brew_time][]" value="time">
     <br><br>
     <span>Tasting Notes:</span>
-      <input type="text" name="tea[type][tasting_notes]">
+      <input type="text" name="tea[tasting_notes]">
     <br><br>
     <span>Comments:</span>
-      <input type="text" name="tea[type][comments]">
+      <input type="text" name="tea[comments]">
     <br><br>
     <input type="submit" value="Edit Tea">
   </form>
