@@ -62,9 +62,12 @@ class TeaController < ApplicationController
       flash[:message] = "Please enter all fields."
       redirect "/users/#{current_user.slug}/teas/#{@tea.id}/edit"
     else
-      @user = current_user
-      @tea = Tea.find(params[:id])
-      @tea.update(params[:tea][:type])
+      user = current_user
+      # @tea = Tea.find(params[:id])
+      @tea = user.teas.find(params[:id])
+      @tea.update(params[:tea])
+      # @tea.types = params[:tea][:type]
+      # @tea.type_ids = params[:type][:type_ids]
       @tea.save
       flash[:message] = "Your Tea has been updated!"
       redirect "/users/#{current_user.slug}/teas/#{@tea.id}"
