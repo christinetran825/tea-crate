@@ -64,15 +64,8 @@ class TeaController < ApplicationController
     else
       @user = current_user
       @tea = Tea.find(params[:id])
-      # @tea = user.teas.find(params[:id])
       @tea.update(params[:tea])
-      # binding.pry
-      @tea.types = params[:type][:type_name]
-      # @tea.type_ids = params[:type][:type_ids]
-      # if !params[:type][:type_name].empty?
-
-      #   @tea.types << Type.create(params[:type][:type_name])
-      # end
+      @tea.type_ids = params[:type][:type_ids]
       @tea.save
       flash[:message] = "Your Tea has been updated!"
       redirect "/users/#{current_user.slug}/teas/#{@tea.id}"
