@@ -62,12 +62,17 @@ class TeaController < ApplicationController
       flash[:message] = "Please enter all fields."
       redirect "/users/#{current_user.slug}/teas/#{@tea.id}/edit"
     else
-      user = current_user
-      # @tea = Tea.find(params[:id])
-      @tea = user.teas.find(params[:id])
+      @user = current_user
+      @tea = Tea.find(params[:id])
+      # @tea = user.teas.find(params[:id])
       @tea.update(params[:tea])
-      # @tea.types = params[:tea][:type]
+      # binding.pry
+      @tea.types = params[:type][:type_name]
       # @tea.type_ids = params[:type][:type_ids]
+      # if !params[:type][:type_name].empty?
+
+      #   @tea.types << Type.create(params[:type][:type_name])
+      # end
       @tea.save
       flash[:message] = "Your Tea has been updated!"
       redirect "/users/#{current_user.slug}/teas/#{@tea.id}"
@@ -78,10 +83,10 @@ class TeaController < ApplicationController
     if logged_in?
       @user = current_user
       @tea = Tea.find(params[:id])
-      @type = Type.find(params[:id])
+      # @type = Type.find(params[:id])
       if @tea.user_id == session[:user_id]
         @tea.delete
-        @type.delete
+        # @type.delete
         flash[:message] = "Your Tea has been removed from your crate!"
         redirect "/users/#{@user.slug}/teas"
       else
