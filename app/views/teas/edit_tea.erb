@@ -18,7 +18,7 @@
     <br><br>
     <span>Types:</span>
     <% @tea.types.each do |type| %>
-      <input type="checkbox" name="type[type_ids][]" value="<%=type.id%>" id="<%=type.id%>" <%= @tea.types.include?(type) ? "checked" : "" %>><%=type.type_name%></input>
+      <input type="checkbox" name="type[type_ids][]" value="<%=type.id%>" id="<%=type.id%>" <%= 'checked' if @tea.types.include?(type) %>><%=type.type_name%></input>
     <%end%>
      Or create a new type: <input type="text" name="type[type_name]"/>
     <br><br>
