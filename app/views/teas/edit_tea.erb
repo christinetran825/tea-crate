@@ -17,7 +17,6 @@
       Or create a new brand: <input type="text" name="tea[brand]"/>
     <br><br>
     <span>Types:</span>
-
     <% @tea.types.each do |type| %>
       <input type="checkbox" name="type[type_ids][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.type_name%></input>
     <%end%>
@@ -36,16 +35,14 @@
       <input type="radio" name="tea[caffeine]" value="Caffeine-Free"> Caffeine-Free
     <br><br>
     <span>Pairings:</span>
-    <%@tea.types.each do |type|%>
       <input type="text" name="tea[pairing][]" value="<%=@tea.pairing%>"/>
-    <%end%>
       Or create a new pairing: <input type="text" name="tea[pairing]"/>
     <br><br>
     <span>Brew Time:</span>
-      <input type="text" name="tea[type][brew_time][]" value="# of scoops/teabags">
-      <input type="text" name="tea[type][brew_time][]" value="# of cups">
-      <input type="text" name="tea[type][brew_time][]" value="temperature">
-      <input type="text" name="tea[type][brew_time][]" value="time">
+      <input type="text" name="tea[brew_time][]" value="# of scoops/teabags">
+      <input type="text" name="tea[brew_time][]" value="# of cups">
+      <input type="text" name="tea[brew_time][]" value="temperature">
+      <input type="text" name="tea[brew_time][]" value="time">
     <br><br>
     <span>Tasting Notes:</span>
       <input type="text" name="tea[tasting_notes]">
