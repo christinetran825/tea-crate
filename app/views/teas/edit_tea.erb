@@ -18,7 +18,7 @@
     <br><br>
     <span>Types:</span>
     <% @tea.types.each do |type| %>
-      <input type="checkbox" name="type[type_ids][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.type_name%></input>
+      <input type="checkbox" name="type[type_ids][]" value="<%=type.id%>" id="<%=type.id%>" <%= @tea.types.include?(type) ? "checked" : "" %>><%=type.type_name%></input>
     <%end%>
      Or create a new type: <input type="text" name="type[type_name]"/>
     <br><br>
@@ -45,10 +45,10 @@
       <input type="text" name="tea[brew_time][]" value="time">
     <br><br>
     <span>Tasting Notes:</span>
-      <input type="text" name="tea[tasting_notes]">
+      <input type="text" name="tea[tasting_notes]" value="<%=@tea.tasting_notes%>"/>
     <br><br>
     <span>Comments:</span>
-      <input type="text" name="tea[comments]">
+      <input type="text" name="tea[comments]" value="<%=@tea.comments%>"/>
     <br><br>
     <input type="submit" value="Edit Tea">
   </form>
