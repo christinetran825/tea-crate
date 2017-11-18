@@ -14,7 +14,6 @@
     <br><br>
     <span>Brand:</span>
       <input type="text" id="brand" name="tea[brand]" value="<%=@tea.brand%>"/>
-
     <br><br>
     <span>Types:</span>
     <% @tea.types.each do |type| %>
@@ -24,7 +23,6 @@
     <br><br>
     <span>Origin:</span>
       <input type="text" name="tea[origin]" value="<%=@tea.origin%>"/>
-
     <br><br>
     <span>Leaves:</span>
       <input type="radio" name="tea[leaves]" value="Loose Leaf"> Loose Leaf
@@ -35,8 +33,7 @@
       <input type="radio" name="tea[caffeine]" value="Caffeine-Free"> Caffeine-Free
     <br><br>
     <span>Pairings:</span>
-      <input type="text" name="tea[pairing][]" value="<%=@tea.pairing%>"/>
-  
+      <input type="text" name="tea[pairing]" value="<%=@tea.pairing%>"/>
     <br><br>
     <span>Brew Time:</span>
       <input type="text" name="tea[brew_time][]" value="# of scoops/teabags">
