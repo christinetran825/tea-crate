@@ -6,8 +6,7 @@
     <br><br>
     <span>Brand:</span>
       <input type="text" id="brand" name="tea[brand]">
-      <br><br>Please enter the brand name or enter Unknown
-    <br><br>
+      <br><br><p class="notes">Please enter the brand's name or enter Unknown</p>
     <span>Types:</span>
     <%@types.each do |type|%>
       <input type="checkbox" name="type[type_ids][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.type_name%></input>
