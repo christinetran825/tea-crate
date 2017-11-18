@@ -21,25 +21,23 @@ class TeaController < ApplicationController
 
   post '/users/teas' do
     if params.values.any? {|value| value == ""}
-     flash[:message] = "Please enter all fields."
-     redirect "/users/#{current_user.slug}/teas/new"
-   else
-     user = current_user
-     @tea = current_user.teas.build(params[:tea])
-     if !params[:type][:type_name].blank?
-       @tea.types.new(type_name: params[:type][:type_name])
-     else
-      binding.pry
-      @tea.type_ids = params[:type][:type_ids] #shows checkboxes
-     end
-       if @tea.save
-         binding.pry
-         flash[:message] = "New Tea added to crate!"
-         redirect "/users/#{current_user.slug}/teas/#{@tea.id}"
-       else
-         redirect "/users/#{current_user.slug}/teas/new"
-       end
-   end
+      flash[:message] = "Please enter all fields."
+      redirect "/users/#{current_user.slug}/teas/new"
+    else
+      user = current_user
+      @tea = current_user.teas.build(params[:tea])
+      if !params[:type][:type_name].blank?
+        @tea.types.new(type_name: params[:type][:type_name])
+      else
+        @tea.type_ids = params[:type][:type_ids] #shows checkboxes
+      end
+      if @tea.save
+        flash[:message] = "New Tea added to crate!"
+        redirect "/users/#{current_user.slug}/teas/#{@tea.id}"
+      else
+        redirect "/users/#{current_user.slug}/teas/new"
+      end
+    end
   end
 
   get '/users/:slug/teas/:id' do
