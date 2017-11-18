@@ -62,7 +62,6 @@ class TeaController < ApplicationController
   end
 
   patch '/users/:slug/teas/:id' do
-    # binding.pry
     if params.values.any? {|value| value == ""}
       flash[:message] = "Please enter all fields."
       redirect "/users/#{current_user.slug}/teas/#{@tea.id}/edit"
@@ -70,7 +69,18 @@ class TeaController < ApplicationController
       @user = current_user
       @tea = Tea.find(params[:id])
       @tea.update(params[:tea])
-      @tea.type_ids = params[:type][:type_ids]
+      # @tea.type_ids = params[:type][:type_ids]
+      binding.pry
+      if @tea.types.blank?
+        @tea.types = Type.all
+      else
+        if !params[:type][:type_name].blank?
+          @tea.types.new(type_name: params[:type][:type_name])
+        else
+          # @tea.types = params[:type][:type_ids] #shows checkboxes
+          @tea.type_ids = params[:type][:type_ids] #shows checkboxes
+        end
+      end
       @tea.save
       flash[:message] = "Your Tea has been updated!"
       redirect "/users/#{current_user.slug}/teas/#{@tea.id}"
