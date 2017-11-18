@@ -26,13 +26,19 @@ class TeaController < ApplicationController
    else
      user = current_user
      @tea = current_user.teas.build(params[:tea])
-     @tea.type_ids = params[:type][:type_ids]
-     if @tea.save
-       flash[:message] = "New Tea added to crate!"
-       redirect "/users/#{current_user.slug}/teas/#{@tea.id}"
+     if !params[:type][:type_name].blank?
+       @tea.types.new(type_name: params[:type][:type_name])
      else
-       redirect "/users/#{current_user.slug}/teas/new"
+      binding.pry
+      @tea.type_ids = params[:type][:type_ids] #shows checkboxes
      end
+       if @tea.save
+         binding.pry
+         flash[:message] = "New Tea added to crate!"
+         redirect "/users/#{current_user.slug}/teas/#{@tea.id}"
+       else
+         redirect "/users/#{current_user.slug}/teas/new"
+       end
    end
   end
 
@@ -58,6 +64,7 @@ class TeaController < ApplicationController
   end
 
   patch '/users/:slug/teas/:id' do
+    # binding.pry
     if params.values.any? {|value| value == ""}
       flash[:message] = "Please enter all fields."
       redirect "/users/#{current_user.slug}/teas/#{@tea.id}/edit"
@@ -76,14 +83,12 @@ class TeaController < ApplicationController
     if logged_in?
       @user = current_user
       @tea = Tea.find(params[:id])
-      # @type = Type.find(params[:id])
       if @tea.user_id == session[:user_id]
         @tea.delete
-        # @type.delete
         flash[:message] = "Your Tea has been removed from your crate!"
-        redirect "/users/#{@user.slug}/teas"
+        redirect "/users/#{current_user.slug}/teas"
       else
-        redirect "/users/#{@user.slug}/teas"
+        redirect "/users/#{current_user.slug}/teas"
       end
     else
       redirect '/login'
