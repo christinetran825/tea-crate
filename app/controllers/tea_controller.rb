@@ -13,6 +13,7 @@ class TeaController < ApplicationController
     if logged_in?
       @user = current_user
       @types = Type.all
+      binding.pry
       erb :'/teas/create_tea'
     else
       redirect '/login'
@@ -55,6 +56,7 @@ class TeaController < ApplicationController
       @user = current_user
       @tea = Tea.find(params[:id])
       @tea.user_id == session[:user_id]
+      @tea.types = Type.all
         erb :'/teas/edit_tea'
     else
       redirect '/login'
@@ -69,18 +71,7 @@ class TeaController < ApplicationController
       @user = current_user
       @tea = Tea.find(params[:id])
       @tea.update(params[:tea])
-      # @tea.type_ids = params[:type][:type_ids]
-      binding.pry
-      if @tea.types.blank?
-        @tea.types = Type.all
-      else
-        if !params[:type][:type_name].blank?
-          @tea.types.new(type_name: params[:type][:type_name])
-        else
-          # @tea.types = params[:type][:type_ids] #shows checkboxes
-          @tea.type_ids = params[:type][:type_ids] #shows checkboxes
-        end
-      end
+      @tea.type_ids = params[:type][:type_ids]
       @tea.save
       flash[:message] = "Your Tea has been updated!"
       redirect "/users/#{current_user.slug}/teas/#{@tea.id}"
