@@ -73,12 +73,13 @@ class TeaController < ApplicationController
       @user = current_user
       @tea = Tea.find(params[:id])
       @tea.update(params[:tea])
-      @tea.type_ids = params[:type][:type_ids]
-      if !params[:type][:type_name].blank?
-        @tea.type_ids = params[:type][:type_ids]
+      if !params[:type][:type_name].blank? && @tea.types.nil? #creating the first type by creating its params as type_name
         @tea.types << @tea.types.new(type_name: params[:type][:type_name])
-      else
-        @tea.type_ids = params[:type][:type_ids] #shows checkboxes
+      elsif !params[:type][:type_name].blank? && !@tea.types.nil? #selecting an existing type from the checkbox AND creating a new type (a tea that has more than one type
+        @tea.types << Type.new(type_name: params[:type][:type_name])
+        @tea.types << Type.last
+      else params[:type][:type_name].blank? && !@tea.types.nil?
+        @tea.type_ids = params[:type][:type_ids] #the type has already been created and is shown as checkboxes
       end
       @tea.save
       flash[:message] = "Your Tea has been updated!"
