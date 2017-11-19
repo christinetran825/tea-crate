@@ -11,8 +11,8 @@
     <%@types.each do |type|%>
       <input type="checkbox" name="type[type_ids][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.type_name%></input>
     <%end%>
-     Or create a new type: <input type="text" name="type[type_name]"/>
-     <br><br><p class="notes">Please enter Black(Red), Green, Oolong, Pu-erh, Tisane(Herbals), White, Yellow, or Unknown</p>
+     ...or create a new type: <input type="text" name="type[type_name]"/>
+     <br><br><p class="notes">Please enter Black(Red), Green, Oolong, Pu-erh, Tisane(Herbals, Roobios), White, Yellow, or Unknown</p>
     <span>Origin:</span>
       <input type="text" name="tea[origin]"/>
      <br><br><p class="notes">Please enter China, Japan, India, Sri Lanka(Ceylon), Taiwan, or Unknown</p>
