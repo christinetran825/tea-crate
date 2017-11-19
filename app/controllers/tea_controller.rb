@@ -26,10 +26,13 @@ class TeaController < ApplicationController
     else
       user = current_user
       @tea = current_user.teas.build(params[:tea])
-      if !params[:type][:type_name].blank?
+      if !params[:type][:type_name].blank? && @tea.types.nil? #creating the first type by creating its params as type_name
         @tea.types.new(type_name: params[:type][:type_name])
-      else
-        @tea.type_ids = params[:type][:type_ids] #shows checkboxes
+      elsif !params[:type][:type_name].blank? && !@tea.types.nil? #selecting an existing type from the checkbox AND creating a new type (a tea that has more than one type)
+        @tea.types << @tea.types.new(type_name: params[:type][:type_name])
+        @tea.type_ids = params[:type][:type_ids]
+      else params[:type][:type_name].blank? && !@tea.types.nil?
+        @tea.type_ids = params[:type][:type_ids] #the type has already been created and is shown as checkboxes
       end
       if @tea.save
         flash[:message] = "New Tea added to crate!"
