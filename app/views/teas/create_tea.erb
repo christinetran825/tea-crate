@@ -11,11 +11,12 @@
     <%@types.each do |type|%>
       <input type="checkbox" name="type[type_ids][]" value="<%=type.id%>" id="<%=type.id%>"><%=type.type_name%></input>
     <%end%>
-     ...or create a new type: <input type="text" name="type[type_name]"/>
-     <br><br><p class="notes">Please enter Black(Red), Green, Oolong, Pu-erh, Tisane(Herbals, Roobios), White, Yellow, or Unknown</p>
+    <p></p>
+     <p>...or create a new type: <input type="text" name="type[type_name]"/></p>
+     <p class="notes">Please enter Black(Red), Green, Oolong, Pu-erh, Tisane(Herbals, Roobios), White, Yellow, or Unknown</p>
     <span>Origin:</span>
       <input type="text" name="tea[origin]"/>
-     <br><br><p class="notes">Please enter China, Japan, India, Sri Lanka(Ceylon), Taiwan, or Unknown</p>
+     <br><br><p class="notes">Please enter a comma for multiple origins (ex. China, Japan). Enter Unknown for unknown origins</p>
     <span>Leaves:</span>
       <input type="radio" name="tea[leaves]" value="Loose Leaf"> Loose Leaf
       <input type="radio" name="tea[leaves]" value="Teabag"> Teabag
@@ -26,7 +27,7 @@
     <br><br>
     <span>Pairings:</span>
       <input type="text" name="tea[pairing]"/>
-    <br><br>
+    <br><br><p class="notes">Please enter a comma for multiple pairings (ex. Milk, Cream). Enter None for no pairings</p>
     <span>Brew Time:</span>
       <input type="text" name="tea[brew_time][]" value="# of scoops/teabags">
       <input type="text" name="tea[brew_time][]" value="# of cups">
