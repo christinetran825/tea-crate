@@ -37,7 +37,7 @@ class ApplicationController < Sinatra::Base
 
 #--- helper methods ---
   def current_user
-    User.find_by(session[:user_id])
+    User.find(session[:user_id])
   end
 
   def logged_in?
