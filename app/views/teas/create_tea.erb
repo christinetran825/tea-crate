@@ -40,6 +40,13 @@
     <span>Comments:</span>
       <input type="text" name="tea[comments]">
     <br><br>
+    <span>Rating:</span>
+      <select name="tea[rating]">
+        <% (1..5).to_a.each do |number| %>
+          <option value="<%=number%>"><%= number %></option>
+        <% end %>
+      </select>
+    <br><br>
     <input type="submit" value="Add New Tea">
   </form>
 
