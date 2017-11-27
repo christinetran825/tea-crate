@@ -14,13 +14,14 @@ class UserController < ApplicationController
       flash[:message] = "You must create both a username and password."
       redirect "/signup"
     else
-      @user = User.create
-      @user.username = params[:username]
-      @user.email = params[:email]
-      @user.password = params[:password]
-      @user.save
-      session[:user_id] = @user.id
-      redirect "/users/#{@user.slug}"
+      @user = User.new(params[:user])
+      if @user.save
+        session[:user_id] = @user.id
+        redirect "/users/#{@user.slug}"
+      else
+        flash[:message] = "There was a problem creating this account!"
+        erb :'/users/signup'
+      end
     end
   end
 
