@@ -24,7 +24,6 @@ class TeaController < ApplicationController
       flash[:message] = "Please enter all fields."
       redirect "/users/#{current_user.slug}/teas/new"
     else
-      user = current_user
       @tea = current_user.teas.build(params[:tea])
       if !params[:type][:type_name].blank? && @tea.types.nil? #creating the first type by creating its params as type_name
         @tea.types.new(type_name: params[:type][:type_name])
