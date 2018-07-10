@@ -46,7 +46,7 @@ GEM
     mustermann (1.0.2)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
-    pg (0.21.0)
+    pg (1.0.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -58,6 +58,11 @@ GEM
       rack
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     rake (12.3.1)
     require_all (2.0.0)
     ripl (0.7.1)
@@ -120,6 +125,7 @@ DEPENDENCIES
   pry
   rack-flash3
   rack-test
+  rails_12factor
   rake
   require_all
   rspec

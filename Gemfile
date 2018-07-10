@@ -17,12 +17,12 @@ gem 'rack-flash3'
 
 group :production, :staging do
   gem "pg"
+  gem 'rails_12factor'
 end
 
 group :development, :test do
   gem "sqlite3"
 end
-
 
 group :test do
   gem 'rspec'
