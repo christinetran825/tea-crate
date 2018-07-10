@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+ruby '2.5.0'
 
 gem 'pg', '~> 0.20', :group => :production
 gem 'sinatra'
