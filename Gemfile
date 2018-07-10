@@ -16,7 +16,7 @@ gem "tux"
 gem 'rack-flash3'
 
 group :production, :staging do
-  gem "pg"
+  gem "pg", '~> 0.20'
   gem 'rails_12factor'
 end
 
