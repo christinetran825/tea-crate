@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'pg', :group => :production
+gem 'pg', '~> 0.20', :group => :production
 gem 'sinatra'
 gem 'activerecord', '~> 4.2', '>= 4.2.6', :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
