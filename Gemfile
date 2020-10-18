@@ -14,6 +14,7 @@ gem 'pry'
 gem 'bcrypt'
 gem "tux"
 gem 'rack-flash3'
+gem "rack", ">= 2.1.4"
 
 group :production, :staging do
   gem "pg", '~> 0.20'
